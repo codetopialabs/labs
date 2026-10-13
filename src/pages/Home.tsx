@@ -5,7 +5,6 @@ import { WorkWithUs } from '../components/WorkWithUs'
 import { scope } from '../data/areas'
 import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
-import { projects } from '../data/projects'
 
 export function Home() {
   return (
@@ -21,28 +20,6 @@ export function Home() {
         </div>
         <p className="scope">{scope}</p>
         <FieldGrid />
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <h2 className="eyebrow">Projects</h2>
-          <Link to="/projects" className="section-more" viewTransition>
-            All projects
-          </Link>
-        </div>
-        <ul className="rows">
-          {projects.slice(0, 3).map((project) => (
-            <li key={project.name}>
-              {project.url ? (
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  {project.name}
-                </a>
-              ) : (
-                <span>{project.name}</span>
-              )}
-            </li>
-          ))}
-        </ul>
       </section>
 
       {posts.length > 0 && (
