@@ -26,7 +26,15 @@ export function WorkCards({ items, detailed = false }: { items: Project[]; detai
             )}
           </h3>
           <p className="card-line">{project.description}</p>
-          {detailed && <p className="card-meta">{project.tags.join(', ')}</p>}
+          {detailed && (
+            <ul className="tags" aria-label="Built with">
+              {project.tags.map((tag) => (
+                <li key={tag} className="tag">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
           {detailed && <p className="card-status">{statusLabels[project.status]}</p>}
         </li>
       ))}
