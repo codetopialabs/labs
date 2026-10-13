@@ -12,7 +12,7 @@ export function Home() {
   return (
     <>
       <title>Codetopia Labs</title>
-      <h1 className="hero">We research and build technology for problems without easy answers.</h1>
+      <h1 className="hero">We research what's hard and engineer what works.</h1>
 
       <Latest />
 
