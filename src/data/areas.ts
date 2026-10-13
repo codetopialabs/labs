@@ -5,14 +5,14 @@ import type { Field } from '../components/FieldIcon'
 export const scope = 'Most of the problems we work on cross more than one of these.'
 
 export const fields: { name: string; line: string; icon: Field }[] = [
-  { name: 'Research', line: 'Studying a problem before we solve it.', icon: 'research' },
-  { name: 'Software', line: 'Apps and the systems behind them.', icon: 'software' },
-  { name: 'Hardware', line: 'Devices and the code that runs them.', icon: 'hardware' },
-  { name: 'AI', line: 'Models put to work in real products.', icon: 'ai' },
-  { name: 'Automation', line: "Taking repetitive work off people's hands.", icon: 'automation' },
-  { name: 'Data', line: 'Making sense of what you collect.', icon: 'data' },
-  { name: 'Infrastructure', line: 'Keeping systems deployed and running.', icon: 'infrastructure' },
-  { name: 'Design', line: 'Interfaces people understand quickly.', icon: 'design' },
+  { name: 'Research', line: 'We find the real problem first.', icon: 'research' },
+  { name: 'Software', line: 'Systems that hold up in daily use.', icon: 'software' },
+  { name: 'Hardware', line: 'Devices that leave the lab.', icon: 'hardware' },
+  { name: 'AI', line: 'Models doing real work.', icon: 'ai' },
+  { name: 'Automation', line: 'Work that runs itself.', icon: 'automation' },
+  { name: 'Data', line: 'Numbers you can act on.', icon: 'data' },
+  { name: 'Infrastructure', line: 'Systems that stay up.', icon: 'infrastructure' },
+  { name: 'Design', line: 'Interfaces that need no manual.', icon: 'design' },
 ]
 
 // How a piece of work moves through the lab, shown under the fields.
