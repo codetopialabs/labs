@@ -25,6 +25,7 @@ export type Project = {
   url?: string
 }
 
+// Newest first.
 export const projects: Project[] = [
   {
     name: 'Codetopia Academy',
@@ -35,6 +36,25 @@ export const projects: Project[] = [
     year: '2026',
     added: '2026-10-11',
     url: 'https://academy.codetopia.org',
+  },
+  {
+    name: 'Codetopia Community Portal',
+    status: 'live',
+    description:
+      'Membership platform for the Codetopia community. Members sign up, go through onboarding and get verified, and the core team manages roles, teams and programmes in one place.',
+    tags: ['Next.js', 'Django', 'PostgreSQL', 'WebSockets'],
+    year: '2026',
+    added: '2026-04-16',
+    url: 'https://portal.community.codetopia.org',
+  },
+  {
+    name: 'Vector',
+    status: 'live',
+    description:
+      'Discord bot that runs the Codetopia community server. It verifies new members against the portal, welcomes them and handles moderation.',
+    tags: ['TypeScript', 'discord.js', 'Prisma', 'PostgreSQL'],
+    year: '2026',
+    added: '2026-04-01',
   },
 ]
 
