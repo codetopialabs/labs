@@ -1,0 +1,348 @@
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+/* Name on the left, sections on the right, same place on every page. */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  view-transition-name: header;
+}
+
+.nav {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  transition: opacity 0.2s var(--ease);
+}
+
+.logo img {
+  height: 30px;
+  width: auto;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text);
+}
+
+/* ─── Page ────────────────────────────────────────────────────────────────── */
+/* One readable column. */
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 3.5rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  view-transition-name: page;
+}
+
+.page a {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s var(--ease);
+}
+
+.page a:hover {
+  text-decoration-color: currentColor;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ─── Home ──────────────────────────────────────────────────────────────── */
+
+.lede {
+  font-size: 1.25rem;
+  font-weight: 450;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+}
+
+/* Latest note, announced under the statement. */
+.page a.latest {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.page a.latest:hover {
+  color: var(--text);
+}
+
+.latest-tag {
+  padding: 0.0625rem 0.4375rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.section {
+  margin-top: 2.5rem;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.page a.section-more {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.page a.section-more:hover {
+  color: var(--text);
+}
+
+/* Compact rows: title on the left, status or date on the right. */
+.rows {
+  list-style: none;
+}
+
+.rows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 0.375rem;
+}
+
+.page .rows a {
+  text-decoration: none;
+}
+
+.page .rows a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Maze ──────────────────────────────────────────────────────────────── */
+
+.maze {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  line-height: 0;
+}
+
+/* ─── Projects ────────────────────────────────────────────────────────────── */
+
+.projects {
+  list-style: none;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.projects li {
+  padding-block: 1rem;
+}
+
+.project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.project-name {
+  font-weight: 500;
+}
+
+.project-meta {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/* Status and year, side by side and vertically centred. */
+
+.project-facts {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+}
+
+/* Status: a line icon and a word. */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  color: var(--text);
+}
+
+.status-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+}
+
+.status-archived {
+  color: var(--text-muted);
+}
+
+.status-key {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 1rem;
+}
+
+.status-key .status {
+  color: var(--text-muted);
+}
+
+/* ─── Blog ────────────────────────────────────────────────────────────────── */
+
+.posts {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.posts li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.post-title {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+/* Contact always within reach. */
+
+.footer {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  view-transition-name: footer;
+}
+
+.footer a {
+  transition: color 0.2s var(--ease);
+}
+
+.footer a:hover {
+  color: var(--text);
+}
+
+/* ─── Small screens ───────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .logo img {
+    height: 26px;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+  }
+
+  .page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .footer {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+}
+
+/* ─── Page transitions ────────────────────────────────────────────────────── */
+/* On internal navigation the page slides out to the left and the next one
+   slides in from the right. Header and footer stay put. */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(page) {
+    animation: page-out 0.45s var(--ease) both;
+  }
+
+  ::view-transition-new(page) {
+    animation: page-in 0.45s var(--ease) both;
+  }
+}
+
+@keyframes page-out {
+  to {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes page-in {
+  from {
+    transform: translateX(100vw);
+  }
+}
