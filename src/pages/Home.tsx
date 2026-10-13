@@ -1,9 +1,9 @@
 import { Link } from 'react-router'
-import { FieldGrid } from '../components/FieldGrid'
+import { Emblem } from '../components/Emblem'
 import { Latest } from '../components/Latest'
 import { WorkCards } from '../components/WorkCards'
 import { WorkWithUs } from '../components/WorkWithUs'
-import { scope } from '../data/areas'
+import { fields } from '../data/areas'
 import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
 import { projects } from '../data/projects'
@@ -12,17 +12,13 @@ export function Home() {
   return (
     <>
       <title>Codetopia Labs</title>
+      <Emblem />
       <h1 className="hero">We research what's hard and engineer what works.</h1>
+      <p className="field-line">
+        {fields.map((field) => field.name.toLowerCase()).join(' / ')}
+      </p>
 
       <Latest />
-
-      <section className="section">
-        <div className="section-head">
-          <h2 className="eyebrow">What we do</h2>
-        </div>
-        <p className="scope">{scope}</p>
-        <FieldGrid />
-      </section>
 
       <section className="section">
         <div className="section-head">
