@@ -7,6 +7,19 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: 'sliding-between-pages',
+    title: 'Sliding between pages',
+    date: '2026-10-13',
+    body: [
+      'When you move between pages on this site, the content slides out to the left and the next page slides in from the right. The header and footer stay where they are. This uses the browser\'s View Transitions API and a few lines of CSS. There is no animation library.',
+      'The router does most of the work. Links on the site are React Router links with the viewTransition option set. When one is clicked, the router calls document.startViewTransition and renders the next page inside it.',
+      'The browser takes a snapshot of the page before and after the change. Any element with a view-transition-name gets its own pair of snapshots that can be animated on their own. The main content area is named page, and the header and footer have names too, so only the content moves.',
+      'The slide is two keyframes. The old snapshot moves left by the width of the screen, and the new one starts the same distance to the right and moves into place. Both take 0.45 seconds. We also turned off the default cross-fade on the rest of the page so nothing else flickers.',
+      'Browsers without view transitions switch pages instantly. The same happens if your system is set to reduce motion.',
+      'To check it, we drove Chrome through its debugging protocol, clicked a link, and listed the animations that were running. The content ran the slide out and slide in, and the header and footer stayed still.',
+    ],
+  },
+  {
     slug: 'the-maze',
     title: 'How the home page maze works',
     date: '2026-10-13',
