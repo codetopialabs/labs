@@ -110,13 +110,7 @@
 }
 
 .latest-tag {
-  padding: 0.0625rem 0.4375rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   color: var(--text);
 }
 
@@ -139,6 +133,25 @@
 
 .page a.section-more:hover {
   color: var(--text);
+}
+
+/* What we do: one sentence, then the fields as a plain grid. */
+.scope {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.fields {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .fields {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Compact rows: title on the left, status or date on the right. */

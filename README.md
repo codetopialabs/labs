@@ -20,5 +20,5 @@ Hosted on Vercel. `vercel.json` rewrites every path to `index.html` so links lik
 ## Content
 
 - Projects: `src/data/projects.ts`. Each project has a status (`research`, `experiment`, `building`, `live`, `archived`), the year it reached that status, and an optional URL.
-- Notes: `src/data/posts.ts`. The newest post goes first; it is also shown as "New" on the home page.
+- Blog posts: `src/data/posts.ts`. The newest post goes first; it is also shown as "New" on the home page.
 - Contact email: `email` in `src/data/projects.ts`.

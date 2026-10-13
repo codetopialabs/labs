@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 import { Maze } from '../components/Maze'
 import { StatusIcon } from '../components/StatusIcon'
+import { fields, scope } from '../data/areas'
 import { posts } from '../data/posts'
 import { projects, statusLabels } from '../data/projects'
 
@@ -25,6 +26,18 @@ export function Home() {
           {latest.title}
         </Link>
       )}
+
+      <section className="section">
+        <div className="section-head">
+          <h2 className="eyebrow">What we do</h2>
+        </div>
+        <p className="scope">{scope}</p>
+        <ul className="fields">
+          {fields.map((field) => (
+            <li key={field}>{field}</li>
+          ))}
+        </ul>
+      </section>
 
       <section className="section">
         <div className="section-head">
@@ -54,9 +67,9 @@ export function Home() {
 
       <section className="section">
         <div className="section-head">
-          <h2 className="eyebrow">Notes</h2>
+          <h2 className="eyebrow">Blog</h2>
           <Link to="/blog" className="section-more" viewTransition>
-            All notes
+            All posts
           </Link>
         </div>
         <ul className="rows">

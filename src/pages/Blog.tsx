@@ -5,7 +5,7 @@ export function Blog() {
   return (
     <>
       <title>Blog | Codetopia Labs</title>
-      <h1>Notes</h1>
+      <h1>Blog</h1>
       <ul className="posts">
         {posts.map((post) => (
           <li key={post.slug}>
