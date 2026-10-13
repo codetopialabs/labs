@@ -648,10 +648,9 @@
 @media (min-width: 1024px) {
   .social-rail {
     position: fixed;
-    /* Just outside the content column (42rem wide, text inset 1.5rem),
-       about 2.5rem from where the text starts; never closer than 2rem to
-       the screen edge. */
-    left: max(2rem, calc(50% - 23rem));
+    /* Centred in the left margin, halfway between the screen edge and where
+       the text starts (50% - 19.5rem); never closer than 2rem to the edge. */
+    left: max(2rem, calc((50% - 19.5rem) / 2 - 0.5rem));
     bottom: 2rem;
     z-index: 10;
     display: flex;
