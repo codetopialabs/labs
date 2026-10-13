@@ -639,7 +639,7 @@
   transition: color 0.2s var(--ease);
 }
 
-/* Social rail: fixed to the bottom-left corner, outside the content column.
+/* Social rail: fixed at the bottom, just left of the content column.
    Only on screens wide enough to leave room; the footer row covers the rest. */
 .social-rail {
   display: none;
@@ -648,7 +648,10 @@
 @media (min-width: 1024px) {
   .social-rail {
     position: fixed;
-    left: 2rem;
+    /* Just outside the content column (42rem wide, text inset 1.5rem),
+       about 2.5rem from where the text starts; never closer than 2rem to
+       the screen edge. */
+    left: max(2rem, calc(50% - 23rem));
     bottom: 2rem;
     z-index: 10;
     display: flex;
