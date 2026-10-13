@@ -38,7 +38,7 @@ function SocialLinks() {
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={social.name}
+          aria-label={`${social.name} (opens in new tab)`}
           title={social.name}
         >
           <svg className="social-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -57,7 +57,7 @@ function Footer() {
         <span>
           A{' '}
           <a href="https://codetopia.org" target="_blank" rel="noopener noreferrer">
-            Codetopia
+            Codetopia<span className="sr-only"> (opens in new tab)</span>
           </a>{' '}
           initiative
         </span>
@@ -72,12 +72,15 @@ function Footer() {
 export function Layout() {
   return (
     <>
+      <a className="skip-link" href="#content">
+        Skip to content
+      </a>
       <Header />
-      <main className="page">
+      <main className="page" id="content" tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />
-      {/* On wide screens the socials sit on the far left, outside the page. */}
+      {/* On wide screens the socials sit in the left margin, outside the page. */}
       <nav className="social-rail" aria-label="Social links">
         <SocialLinks />
       </nav>

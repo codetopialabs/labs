@@ -9,7 +9,7 @@ export function Projects() {
       <h1>Projects</h1>
       {/* The key only earns its space when projects are at different stages. */}
       {new Set(projects.map((p) => p.status)).size > 1 && <StatusKey />}
-      <WorkCards items={projects} detailed />
+      <WorkCards items={projects} detailed headingLevel={2} />
       <WorkWithUs />
     </>
   )
