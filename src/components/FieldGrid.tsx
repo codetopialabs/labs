@@ -1,17 +1,17 @@
 import { fields } from '../data/areas'
 import { FieldIcon } from './FieldIcon'
 
-// What we do, as one plate of eight panels. Each panel carries its field's
-// drawing, large and faint, cropped by the panel edge. Hovering a panel
-// redraws the drawing; otherwise everything is still.
+// Every field icon runs its own motion on a loop, each starting a little
+// after the one before so the grid ripples rather than moving in unison.
+const STAGGER_S = 0.45
+
 export function FieldGrid() {
   return (
-    <ul className="plate">
-      {fields.map((field) => (
-        <li key={field.name} className="panel">
-          <h3 className="panel-name">{field.name}</h3>
-          <p className="panel-line">{field.line}</p>
-          <FieldIcon field={field.icon} art />
+    <ul className="fields">
+      {fields.map((field, i) => (
+        <li key={field.name} style={{ '--stagger': `${i * STAGGER_S}s` } as React.CSSProperties}>
+          <FieldIcon field={field.icon} />
+          {field.name}
         </li>
       ))}
     </ul>

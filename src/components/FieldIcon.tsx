@@ -10,8 +10,8 @@ export type Field =
   | 'infrastructure'
   | 'design'
 
-// A plain string is a path; a tuple carries an older part name and delay
-// that are no longer used.
+// A plain string is a static path; a tuple names a part that animates
+// (see the field icon styles in App.css), with an optional delay in seconds.
 type Part = string | [d: string, part: string, delay?: number]
 
 const paths: Record<Field, Part[]> = {
@@ -70,28 +70,28 @@ const paths: Record<Field, Part[]> = {
   ],
 }
 
-// Default: a small line icon. With `art`, the same drawing is meant to be
-// shown large (about 9rem): a thin stroke in drawing units keeps the lines
-// hairline at that size, and each path is normalised to length 1 so CSS
-// can redraw it.
-export function FieldIcon({ field, art = false }: { field: Field; art?: boolean }) {
+export function FieldIcon({ field }: { field: Field }) {
   return (
     <svg
-      className={art ? 'field-art' : `field-icon field-icon-${field}`}
+      className={`field-icon field-icon-${field}`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={art ? 0.22 : 1.5}
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
       {paths[field].map((part) => {
-        const d = typeof part === 'string' ? part : part[0]
-        return art ? (
-          <path key={d} d={d} pathLength={1} />
-        ) : (
-          <path key={d} d={d} />
+        if (typeof part === 'string') return <path key={part} d={part} />
+        const [d, name, delay] = part
+        return (
+          <path
+            key={d}
+            d={d}
+            className={name}
+            style={delay ? ({ '--link-delay': `${delay}s` } as React.CSSProperties) : undefined}
+          />
         )
       })}
     </svg>
