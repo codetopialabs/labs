@@ -10,8 +10,9 @@ export type Field =
   | 'infrastructure'
   | 'design'
 
-// A plain string is a static path; a tuple names a part that animates
-// (see the field icon styles in App.css), with an optional delay in seconds.
+// A plain string is a static path. A tuple names a part that animates (see
+// the field icon styles in App.css), with an optional delay in seconds so
+// parts can move in sequence.
 type Part = string | [d: string, part: string, delay?: number]
 
 const paths: Record<Field, Part[]> = {
@@ -19,18 +20,19 @@ const paths: Record<Field, Part[]> = {
   software: [
     'M16 18l6-6-6-6',
     'M8 6l-6 6 6 6',
+    ['M14 4L10 20', 'fi-slash'],
   ],
   hardware: [
     'M7 4h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z',
     ['M9.5 9.5h5v5h-5z', 'fi-core'],
-    'M9 1.5V4',
-    'M15 1.5V4',
-    'M9 20v2.5',
-    'M15 20v2.5',
-    'M1.5 9H4',
-    'M1.5 15H4',
-    'M20 9h2.5',
-    'M20 15h2.5',
+    ['M9 1.5V4', 'fi-pin', 0],
+    ['M15 1.5V4', 'fi-pin', 0],
+    ['M20 9h2.5', 'fi-pin', 0.15],
+    ['M20 15h2.5', 'fi-pin', 0.15],
+    ['M15 20v2.5', 'fi-pin', 0.3],
+    ['M9 20v2.5', 'fi-pin', 0.3],
+    ['M1.5 15H4', 'fi-pin', 0.45],
+    ['M1.5 9H4', 'fi-pin', 0.45],
   ],
   ai: [
     'M4.5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
@@ -52,15 +54,15 @@ const paths: Record<Field, Part[]> = {
     'M3 21v-5h5',
   ],
   data: [
-    'M12 8c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3z',
-    'M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5',
-    ['M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3', 'fi-band'],
+    ['M12 8c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3z', 'fi-layer', 0],
+    ['M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3', 'fi-layer', 0.2],
+    ['M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5', 'fi-layer', 0.4],
   ],
   infrastructure: [
     'M4 3h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z',
     'M4 13h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1z',
     ['M7 7h3', 'fi-led'],
-    ['M7 17h3', 'fi-led'],
+    ['M7 17h3', 'fi-led', 0.5],
   ],
   design: [
     'M12 19l7-7 3 3-7 7-3-3z',
@@ -90,7 +92,8 @@ export function FieldIcon({ field }: { field: Field }) {
             key={d}
             d={d}
             className={name}
-            style={delay ? ({ '--link-delay': `${delay}s` } as React.CSSProperties) : undefined}
+            pathLength={name === 'fi-slash' ? 1 : undefined}
+            style={delay ? ({ '--part-delay': `${delay}s` } as React.CSSProperties) : undefined}
           />
         )
       })}
