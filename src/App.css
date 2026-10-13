@@ -211,7 +211,8 @@
   .fields .field-icon path {
     animation-duration: 3.6s;
     animation-timing-function: var(--glide);
-    animation-iteration-count: infinite;
+    /* A few passes, then rest. Keep in step with PASSES in replay.ts. */
+    animation-iteration-count: 3;
     animation-delay: var(--stagger, 0s);
   }
 
@@ -404,7 +405,8 @@
   .work .status-icon path {
     animation-duration: 3.6s;
     animation-timing-function: var(--glide);
-    animation-iteration-count: infinite;
+    /* A few passes, then rest. Keep in step with PASSES in replay.ts. */
+    animation-iteration-count: 3;
     animation-delay: var(--stagger, 0s);
   }
 
@@ -728,4 +730,21 @@
 
 .page:focus {
   outline: none;
+}
+
+/* Hover replay (see replay.ts): one pass, starting at once. */
+@media (prefers-reduced-motion: no-preference) {
+  .card.is-replaying svg,
+  .card.is-replaying svg path {
+    animation-iteration-count: 1;
+    animation-delay: 0s;
+  }
+
+  .card.is-replaying .field-icon .fi-link {
+    animation-delay: var(--link-delay, 0s);
+  }
+
+  .card.is-replaying .field-icon .fi-led + .fi-led {
+    animation-delay: 0.5s;
+  }
 }

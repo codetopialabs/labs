@@ -1,8 +1,10 @@
 import { statusLabels, type Project, type Status } from '../data/projects'
+import { replayIcon } from './replay'
 import { StatusIcon } from './StatusIcon'
 
 // Projects as cards, in the same style as the field cards. Each card's
-// status icon loops its motion, one card after another. Live projects link
+// status icon plays its motion a few times, one card after another, then
+// rests; hovering a card replays it. Live projects link
 // to their site; the link covers the whole card.
 const STAGGER_S = 0.6
 
@@ -25,6 +27,7 @@ export function WorkCards({
           key={project.name}
           className={`card status-${project.status}`}
           style={{ '--stagger': `${i * STAGGER_S}s` } as React.CSSProperties}
+          onMouseEnter={(e) => replayIcon(e.currentTarget)}
         >
           <StatusIcon status={project.status} />
           <Heading className="card-name">
