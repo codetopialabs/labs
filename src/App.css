@@ -576,56 +576,6 @@
   color: var(--text-muted);
 }
 
-/* ─── Project page ──────────────────────────────────────────────────────── */
-
-.page a.back-link {
-  align-self: flex-start;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.2s var(--ease);
-}
-
-.page a.back-link:hover {
-  color: var(--text);
-}
-
-.project-page {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-}
-
-.project-page-facts {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  gap: 1rem;
-}
-
-.project-lede {
-  font-size: 1.125rem;
-  letter-spacing: -0.01em;
-}
-
-.project-page .section {
-  margin-top: 2rem;
-}
-
-.project-page .eyebrow {
-  margin-bottom: 0.5rem;
-}
-
-.built {
-  padding-left: 1.125rem;
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
-}
-
-.built li::marker {
-  color: var(--text-muted);
-}
-
 /* ─── Blog ────────────────────────────────────────────────────────────────── */
 
 .posts {

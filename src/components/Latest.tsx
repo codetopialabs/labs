@@ -32,8 +32,12 @@ export function Latest() {
         {project.name}
       </>
     )
-    return (
-      <Link to={`/projects/${project.slug}`} className="latest" viewTransition>
+    return project.url ? (
+      <a href={project.url} className="latest" target="_blank" rel="noopener noreferrer">
+        {label}
+      </a>
+    ) : (
+      <Link to="/projects" className="latest" viewTransition>
         {label}
       </Link>
     )
