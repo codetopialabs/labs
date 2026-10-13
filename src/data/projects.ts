@@ -33,8 +33,7 @@ export const projects: Project[] = [
       'Website for Codetopia Academy, weekend tech classes in small online groups for children and adults.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     year: '2026',
-    // Placeholder: set to the real date Academy was added.
-    added: '2026-10-13',
+    added: '2026-10-11',
     url: 'https://academy.codetopia.org',
   },
 ]
