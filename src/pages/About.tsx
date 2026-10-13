@@ -10,6 +10,7 @@ export function About() {
         Labs is the research and engineering arm of Codetopia. We work on technical problems
         for Codetopia's own initiatives, and for companies and organisations in any industry.
       </p>
+      <p>Based in Ghana. We work with teams anywhere.</p>
       <HowWeWork />
       <WorkWithUs />
     </>
