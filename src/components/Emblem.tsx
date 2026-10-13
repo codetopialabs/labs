@@ -40,8 +40,12 @@ export function Emblem() {
       }}
     >
       <span key={field.name} className="emblem-item">
-        <FieldIcon field={field.icon} />
-        <span className="emblem-name">{field.name}</span>
+        <span className="emblem-icon">
+          <FieldIcon field={field.icon} />
+        </span>
+        <span className="emblem-mask">
+          <span className="emblem-name">{field.name}</span>
+        </span>
       </span>
     </div>
   )

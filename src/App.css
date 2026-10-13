@@ -220,26 +220,51 @@
 .emblem {
   align-self: flex-start;
   display: flex;
-  min-height: 2.5rem;
+  min-height: 4rem;
   margin-top: 1.5rem;
 }
 
 .emblem-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.125rem;
 }
 
 .emblem .field-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  stroke-width: 1.25;
+  width: 4rem;
+  height: 4rem;
+  stroke-width: 1;
   color: var(--text);
 }
 
+/* The name sits behind a hidden edge so it can roll up into view. */
+.emblem-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.125rem;
+}
+
 .emblem-name {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .emblem {
+    min-height: 3rem;
+  }
+
+  .emblem .field-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .emblem-name {
+    font-size: 1.125rem;
+  }
 }
 
 .emblem .fi-link {
@@ -251,15 +276,23 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .emblem-item {
-    animation: emblem-in 0.6s var(--glide) both;
+  /* The icon focuses in: from slightly soft and small to sharp. Then it
+     plays its own motion. */
+  .emblem-icon {
+    display: block;
+    animation: emblem-focus 0.7s var(--glide) both;
+  }
+
+  /* The name rolls up from behind its edge, a beat after the icon. */
+  .emblem-name {
+    animation: emblem-roll 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.12s both;
   }
 
   .emblem .field-icon,
   .emblem .field-icon path {
     animation-duration: 2s;
     animation-timing-function: var(--glide);
-    animation-delay: var(--part-delay, 0s);
+    animation-delay: calc(0.5s + var(--part-delay, 0s));
   }
 
   .emblem .field-icon {
@@ -278,10 +311,17 @@
   .emblem .field-icon-design { animation-name: fi-write; }
 }
 
-@keyframes emblem-in {
+@keyframes emblem-focus {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    filter: blur(6px);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes emblem-roll {
+  from {
+    transform: translateY(110%);
   }
 }
 
