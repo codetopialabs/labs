@@ -1,10 +1,12 @@
 import { Link } from 'react-router'
 import { FieldGrid } from '../components/FieldGrid'
 import { Latest } from '../components/Latest'
+import { StatusIcon } from '../components/StatusIcon'
 import { WorkCards } from '../components/WorkCards'
 import { WorkWithUs } from '../components/WorkWithUs'
 import { scope } from '../data/areas'
 import { formatDate } from '../data/date'
+import { exploring } from '../data/exploring'
 import { posts } from '../data/posts'
 import { projects } from '../data/projects'
 
@@ -26,12 +28,29 @@ export function Home() {
 
       <section className="section">
         <div className="section-head">
-          <h2 className="eyebrow">Work</h2>
+          <h2 className="eyebrow">Selected work</h2>
           <Link to="/projects" className="section-more" viewTransition>
             All projects
           </Link>
         </div>
         <WorkCards items={projects.slice(0, 3)} />
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <h2 className="eyebrow">Exploring</h2>
+        </div>
+        <ul className="exploring">
+          {exploring.map((item) => (
+            <li key={item.name}>
+              <StatusIcon status="research" />
+              <div>
+                <h3 className="exploring-name">{item.name}</h3>
+                <p className="exploring-line">{item.line}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {posts.length > 0 && (

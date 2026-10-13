@@ -428,6 +428,38 @@
   }
 }
 
+/* Exploring: open research questions, a quiet list with a research icon. */
+.exploring {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.25rem;
+}
+
+.exploring li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+.exploring .status-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.1875rem;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.exploring-name {
+  font-weight: 500;
+}
+
+.exploring-line {
+  margin-top: 0.125rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
 /* Work cards: each project's status icon loops its motion with the same
    glint as the field icons, one card after another. */
 @media (prefers-reduced-motion: no-preference) {
