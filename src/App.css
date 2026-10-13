@@ -255,7 +255,7 @@
   /* Each icon's motion shows what its field does, and glints as it moves. */
   .fields .field-icon-research { animation-name: fi-search, fi-glint; }
   .fields .field-icon-software { animation-name: fi-glint; }
-  .fields .fi-slash { animation-name: fi-draw; animation-fill-mode: backwards; }
+  .fields .fi-slash { animation-name: fi-rewrite; }
   .fields .field-icon-hardware { animation-name: fi-glint; }
   .fields .fi-core { animation-name: fi-fade; }
   .fields .fi-pin { animation-name: fi-fade; }
@@ -281,10 +281,13 @@
   42% { transform: translate(1.5px, 1px); }
 }
 
-/* Software: the slash draws itself between the brackets. */
-@keyframes fi-draw {
-  0% { stroke-dashoffset: 1; }
-  30%, 100% { stroke-dashoffset: 0; }
+/* Software: the slash erases itself, then writes itself back in. It starts
+   and ends drawn, so one pass flows into the next with no jump. */
+@keyframes fi-rewrite {
+  0% { stroke-dashoffset: 0; }
+  15% { stroke-dashoffset: -1; }
+  15.01% { stroke-dashoffset: 1; }
+  45%, 100% { stroke-dashoffset: 0; }
 }
 
 /* Design: short writing strokes. */
