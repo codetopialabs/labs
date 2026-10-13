@@ -14,7 +14,8 @@ function sitemap(): Plugin {
     generateBundle() {
       const posts = readFileSync('src/data/posts.ts', 'utf8')
       const slugs = [...posts.matchAll(/slug: '([^']+)'/g)].map((m) => m[1])
-      const paths = ['/', '/about', '/projects', '/blog', ...slugs.map((s) => `/blog/${s}`)]
+      const blog = slugs.length > 0 ? ['/blog', ...slugs.map((s) => `/blog/${s}`)] : []
+      const paths = ['/', '/about', '/projects', ...blog]
       const urls = paths.map((p) => `  <url><loc>${site}${p}</loc></url>`).join('\n')
       this.emitFile({
         type: 'asset',

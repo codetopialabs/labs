@@ -1,7 +1,11 @@
 import { Link } from 'react-router'
+import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
+import { NotFound } from './NotFound'
 
 export function Blog() {
+  if (posts.length === 0) return <NotFound />
+
   return (
     <>
       <title>Blog | Codetopia Labs</title>
@@ -11,7 +15,7 @@ export function Blog() {
           <li key={post.slug}>
             <Link to={`/blog/${post.slug}`} viewTransition>{post.title}</Link>
             <time className="project-meta" dateTime={post.date}>
-              {post.date}
+              {formatDate(post.date)}
             </time>
           </li>
         ))}

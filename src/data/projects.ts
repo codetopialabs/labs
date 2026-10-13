@@ -18,6 +18,9 @@ export type Project = {
   tags: string[]
   // The year the project reached its current status.
   year: string
+  // The day the project was added to this site (YYYY-MM-DD). The newest
+  // project or post is announced on the home page.
+  added: string
   // Only projects with something to visit get a link.
   url?: string
 }
@@ -30,6 +33,8 @@ export const projects: Project[] = [
       'Website for Codetopia Academy, weekend tech classes in small online groups for children and adults.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     year: '2026',
+    // Placeholder: set to the real date Academy was added.
+    added: '2026-10-13',
     url: 'https://academy.codetopia.org',
   },
 ]

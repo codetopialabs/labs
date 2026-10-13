@@ -65,6 +65,19 @@
   view-transition-name: page;
 }
 
+/* Type scale, top to bottom: page title (h1), closing line, item titles
+   and body, section labels, meta. Every page uses the same steps. */
+.page h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.page-intro {
+  color: var(--text-muted);
+}
+
 .page a {
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
@@ -86,12 +99,7 @@
 
 /* ─── Home ──────────────────────────────────────────────────────────────── */
 
-.lede {
-  font-size: 1.25rem;
-  font-weight: 450;
-  line-height: 1.5;
-  letter-spacing: -0.015em;
-}
+
 
 /* Latest note, announced under the statement. */
 .page a.latest {
@@ -110,12 +118,124 @@
 }
 
 .latest-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 500;
   color: var(--text);
 }
 
+/* New post: the page's lines write themselves in, hold, fade, repeat. */
+.post-mark {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.post-mark-line {
+  stroke-dasharray: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .post-mark-line {
+    animation: post-write 3.2s var(--glide) infinite both;
+  }
+}
+
+@keyframes post-write {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  25%, 80% { stroke-dashoffset: 0; opacity: 1; }
+  95%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* New project: its status icon, moving in a way that fits the status. */
+.latest-status .status-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .latest-status-live path:nth-child(n + 2) {
+    animation: live-wave 2.4s var(--glide) infinite;
+  }
+
+  .latest-status-live path:nth-child(n + 4) {
+    animation-delay: 0.3s;
+  }
+
+  .latest-status-building .status-icon {
+    animation: building-turn 2.4s var(--glide) infinite;
+  }
+
+  .latest-status-research .status-icon {
+    animation: fi-sweep 2.4s var(--glide) infinite;
+  }
+}
+
+@keyframes live-wave {
+  0%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+
+@keyframes building-turn {
+  0%, 100% { transform: rotate(0deg); }
+  40% { transform: rotate(-25deg); }
+}
+
+/* Bubbling flask: bubbles rise from the liquid and fade into the neck. */
+.new-mark {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.new-mark-liquid {
+  fill: currentColor;
+  opacity: 0.35;
+}
+
+.new-mark-bubble {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .new-mark-bubble {
+    animation: bubble 1.65s ease-in infinite;
+  }
+}
+
+/* Without motion, show two bubbles at rest so the flask still reads as bubbling. */
+@media (prefers-reduced-motion: reduce) {
+  .new-mark-bubble:nth-of-type(1),
+  .new-mark-bubble:nth-of-type(3) {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-11px) scale(1);
+    opacity: 0;
+  }
+}
+
 .section {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .section-head {
@@ -145,13 +265,209 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem 1.5rem;
+  gap: 0.75rem 1.5rem;
+}
+
+.fields li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+/* Every field icon loops its own motion: it moves in the first part of
+   the loop and rests for the remainder. Movement is applied to the whole icon (smooth
+   on the GPU); parts inside only fade. --stagger offsets each field. */
+.fields .field-icon {
+  transition: color 0.3s var(--ease);
+}
+
+.fields li:hover .field-icon {
+  color: var(--text);
+}
+
+.fields .fi-link {
+  opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fields .field-icon,
+  .fields .field-icon path {
+    animation-duration: 3.6s;
+    animation-timing-function: var(--glide);
+    animation-iteration-count: infinite;
+    animation-delay: var(--stagger, 0s);
+  }
+
+  .fields .field-icon {
+    will-change: transform;
+  }
+
+  .fields .field-icon-research { animation-name: fi-sweep; }
+  .fields .field-icon-software { animation-name: fi-open; }
+  .fields .field-icon-hardware { animation-name: fi-breathe; }
+  .fields .fi-core { animation-name: fi-fade; }
+  .fields .fi-link { animation-name: fi-signal; }
+  .fields .field-icon-automation { animation-name: fi-spin; }
+  .fields .field-icon-data { animation-name: fi-rise; }
+  .fields .fi-band { animation-name: fi-fade; }
+  .fields .fi-led { animation-name: fi-fade; }
+  .fields .field-icon-design { animation-name: fi-stroke; }
+
+  /* The AI links light in order across the network. */
+  .fields .field-icon .fi-link {
+    animation-delay: calc(var(--stagger, 0s) + var(--link-delay, 0s));
+  }
+
+  /* The second server light answers the first. */
+  .fields .field-icon .fi-led + .fi-led {
+    animation-delay: calc(var(--stagger, 0s) + 0.5s);
+  }
+}
+
+@keyframes fi-sweep {
+  0%, 55%, 100% { transform: translateX(0); }
+  18% { transform: translateX(-2px); }
+  38% { transform: translateX(2px); }
+}
+
+@keyframes fi-open {
+  0%, 50%, 100% { transform: scaleX(1); }
+  25% { transform: scaleX(1.3); }
+}
+
+@keyframes fi-breathe {
+  0%, 50%, 100% { transform: scale(1); }
+  25% { transform: scale(0.86); }
+}
+
+@keyframes fi-fade {
+  0%, 50%, 100% { opacity: 1; }
+  25% { opacity: 0.15; }
+}
+
+@keyframes fi-signal {
+  0%, 40%, 100% { opacity: 0.4; }
+  18% { opacity: 1; }
+}
+
+@keyframes fi-spin {
+  0% { transform: rotate(0deg); }
+  50%, 100% { transform: rotate(360deg); }
+}
+
+@keyframes fi-rise {
+  0%, 50%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+}
+
+@keyframes fi-stroke {
+  0%, 50%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-14deg); }
 }
 
 @media (max-width: 640px) {
   .fields {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* How we work: three steps side by side, stacked on phones. */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.step-icon {
+  display: block;
+  margin-bottom: 0.625rem;
+  color: var(--text-muted);
+}
+
+.step-icon .status-icon {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.step-name {
+  font-weight: 500;
+}
+
+.step-text {
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .step-icon .status-icon,
+  .step-icon .status-icon path {
+    animation-duration: 3.6s;
+    animation-timing-function: var(--glide);
+    animation-iteration-count: infinite;
+    animation-delay: var(--stagger, 0s);
+  }
+
+  .step-icon .status-icon {
+    will-change: transform;
+  }
+
+  .step-icon-research .status-icon { animation-name: fi-sweep; }
+  .step-icon-experiment .status-icon { animation-name: fi-breathe; }
+  .step-icon-live .status-icon path:nth-child(n + 2) { animation-name: live-wave; }
+}
+
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Work with us: one line and one clear action. */
+.work-with-us {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.work-with-us-title {
+  font-size: 1.125rem;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+
+.page a.contact-email {
+  font-size: 1.125rem;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+}
+
+.contact-copied {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+
+.contact-copied.is-shown {
+  opacity: 1;
 }
 
 /* Compact rows: title on the left, status or date on the right. */
@@ -173,14 +489,6 @@
 
 .page .rows a:hover {
   text-decoration: underline;
-}
-
-/* ─── Maze ──────────────────────────────────────────────────────────────── */
-
-.maze {
-  align-self: flex-start;
-  margin-bottom: 1rem;
-  line-height: 0;
 }
 
 /* ─── Projects ────────────────────────────────────────────────────────────── */
@@ -272,7 +580,6 @@
 }
 
 .post-title {
-  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
@@ -285,16 +592,66 @@
   margin-inline: auto;
   padding: 1.5rem 1.5rem 2rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
   font-size: 0.8125rem;
   color: var(--text-muted);
   view-transition-name: footer;
 }
 
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.social-mark {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
 .footer a {
   transition: color 0.2s var(--ease);
+}
+
+/* Social rail: fixed to the bottom-left corner, outside the content column.
+   Only on screens wide enough to leave room; the footer row covers the rest. */
+.social-rail {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .social-rail {
+    position: fixed;
+    left: 2rem;
+    bottom: 2rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    color: var(--text-muted);
+    view-transition-name: social-rail;
+  }
+
+  .social-rail a {
+    transition: color 0.2s var(--ease);
+  }
+
+  .social-rail a:hover {
+    color: var(--text);
+  }
+
+  .footer-links {
+    display: none;
+  }
 }
 
 .footer a:hover {
@@ -322,6 +679,10 @@
 
   .page {
     padding: 2rem 1rem 3rem;
+  }
+
+  .page h1 {
+    font-size: 1.375rem;
   }
 
   .footer {

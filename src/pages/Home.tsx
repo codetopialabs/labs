@@ -1,42 +1,27 @@
 import { Link } from 'react-router'
-import { Maze } from '../components/Maze'
+import { FieldGrid } from '../components/FieldGrid'
+import { Latest } from '../components/Latest'
 import { StatusIcon } from '../components/StatusIcon'
-import { fields, scope } from '../data/areas'
+import { WorkWithUs } from '../components/WorkWithUs'
+import { scope } from '../data/areas'
+import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
 import { projects, statusLabels } from '../data/projects'
 
 export function Home() {
-  const latest = posts[0]
-
   return (
     <>
       <title>Codetopia Labs</title>
-      <Maze />
-      <h1 className="lede">
-        Codetopia Labs is the research and engineering division of{' '}
-        <a href="https://codetopia.org" target="_blank" rel="noopener noreferrer">
-          Codetopia
-        </a>
-        , a network of initiatives built in Ghana.
-      </h1>
+      <h1>We research and build technology for problems without easy answers.</h1>
 
-      {latest && (
-        <Link to={`/blog/${latest.slug}`} className="latest" viewTransition>
-          <span className="latest-tag">New</span>
-          {latest.title}
-        </Link>
-      )}
+      <Latest />
 
       <section className="section">
         <div className="section-head">
           <h2 className="eyebrow">What we do</h2>
         </div>
         <p className="scope">{scope}</p>
-        <ul className="fields">
-          {fields.map((field) => (
-            <li key={field}>{field}</li>
-          ))}
-        </ul>
+        <FieldGrid />
       </section>
 
       <section className="section">
@@ -65,26 +50,30 @@ export function Home() {
         </ul>
       </section>
 
-      <section className="section">
-        <div className="section-head">
-          <h2 className="eyebrow">Blog</h2>
-          <Link to="/blog" className="section-more" viewTransition>
-            All posts
-          </Link>
-        </div>
-        <ul className="rows">
-          {posts.slice(0, 3).map((post) => (
-            <li key={post.slug}>
-              <Link to={`/blog/${post.slug}`} viewTransition>
-                {post.title}
-              </Link>
-              <time className="project-meta" dateTime={post.date}>
-                {post.date}
-              </time>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {posts.length > 0 && (
+        <section className="section">
+          <div className="section-head">
+            <h2 className="eyebrow">Blog</h2>
+            <Link to="/blog" className="section-more" viewTransition>
+              All posts
+            </Link>
+          </div>
+          <ul className="rows">
+            {posts.slice(0, 3).map((post) => (
+              <li key={post.slug}>
+                <Link to={`/blog/${post.slug}`} viewTransition>
+                  {post.title}
+                </Link>
+                <time className="project-meta" dateTime={post.date}>
+                  {formatDate(post.date)}
+                </time>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <WorkWithUs />
     </>
   )
 }

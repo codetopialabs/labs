@@ -1,4 +1,5 @@
 import { useParams } from 'react-router'
+import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
 import { NotFound } from './NotFound'
 
@@ -11,7 +12,7 @@ export function Post() {
     <article className="post">
       <title>{`${post.title} | Codetopia Labs`}</title>
       <time className="eyebrow" dateTime={post.date}>
-        {post.date}
+        {formatDate(post.date, 'long')}
       </time>
       <h1 className="post-title">{post.title}</h1>
       {post.body.map((paragraph) => (

@@ -14,6 +14,7 @@
 
   --sans: 'Inter', system-ui, -apple-system, sans-serif;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --glide: cubic-bezier(0.45, 0, 0.55, 1);
 
   font-family: var(--sans);
   font-feature-settings: 'cv11', 'ss01', 'ss03', 'zero';
