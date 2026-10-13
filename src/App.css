@@ -36,6 +36,7 @@
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 1.5rem;
 }
 
@@ -45,6 +46,35 @@
   font-size: 0.9375rem;
   color: var(--text-muted);
   transition: color 0.2s var(--ease);
+}
+
+/* Theme switch: a 32px button holding an 18px icon, styled like the links. */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.4375rem -0.4375rem -0.4375rem 0;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 0;
+}
+
+.theme-toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 .nav-links a:hover,

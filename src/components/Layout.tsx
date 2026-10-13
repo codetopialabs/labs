@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet, ScrollRestoration } from 'react-router'
 import { posts } from '../data/posts'
 import { socials } from '../data/socials'
 import { LabsLogo } from './LabsLogo'
+import { ThemeToggle } from './ThemeToggle'
 import { socialMarks } from './socialMarks'
 
 function Header() {
@@ -23,6 +24,7 @@ function Header() {
               /blog
             </NavLink>
           )}
+          <ThemeToggle />
         </div>
       </nav>
     </header>

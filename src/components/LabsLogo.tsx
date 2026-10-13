@@ -6,7 +6,7 @@ export function LabsLogo({ height = 22 }: { height?: number }) {
       alt="Codetopia Labs"
       width={width}
       height={height}
-      style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+      style={{ objectFit: 'contain', filter: 'var(--logo-filter)' }}
     />
   )
 }
