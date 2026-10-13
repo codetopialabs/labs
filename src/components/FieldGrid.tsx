@@ -1,17 +1,19 @@
 import { fields } from '../data/areas'
 import { FieldIcon } from './FieldIcon'
 
-// Every field icon runs its own motion on a loop, each starting a little
-// after the one before so the grid ripples rather than moving in unison.
+// What we do as eight cards on one surface. Every icon runs its own motion
+// on a loop, each starting a little after the one before so the light
+// ripples across the cards rather than everything moving at once.
 const STAGGER_S = 0.45
 
 export function FieldGrid() {
   return (
-    <ul className="fields">
+    <ul className="fields cards">
       {fields.map((field, i) => (
         <li key={field.name} style={{ '--stagger': `${i * STAGGER_S}s` } as React.CSSProperties}>
           <FieldIcon field={field.icon} />
-          {field.name}
+          <h3 className="card-name">{field.name}</h3>
+          <p className="card-line">{field.line}</p>
         </li>
       ))}
     </ul>

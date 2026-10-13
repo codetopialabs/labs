@@ -316,6 +316,45 @@
   }
 }
 
+/* Cards: eight tiles on one rounded surface. The hairline gaps are the page
+   background showing through, not drawn lines. */
+.fields.cards {
+  gap: 2px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.fields.cards li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 1rem 1rem 1.25rem;
+  background: color-mix(in srgb, var(--text) 3.5%, var(--bg));
+  transition: background-color 0.4s var(--ease);
+}
+
+.fields.cards li:hover {
+  background: color-mix(in srgb, var(--text) 6%, var(--bg));
+}
+
+.fields.cards .field-icon {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.card-name {
+  margin-top: 2.25rem;
+  font-weight: 500;
+}
+
+.card-line {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
 /* How we work: three steps side by side, stacked on phones. */
 .steps {
   list-style: none;
