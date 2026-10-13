@@ -5,6 +5,7 @@ import { Blog } from './pages/Blog'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
 import { Post } from './pages/Post'
+import { ProjectPage } from './pages/ProjectPage'
 import { Projects } from './pages/Projects'
 import './App.css'
 
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/projects', element: <Projects /> },
+      { path: '/projects/:slug', element: <ProjectPage /> },
       { path: '/blog', element: <Blog /> },
       { path: '/blog/:slug', element: <Post /> },
       { path: '/about', element: <About /> },

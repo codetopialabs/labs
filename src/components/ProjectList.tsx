@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { statusLabels, type Project, type Status } from '../data/projects'
 import { StatusIcon } from './StatusIcon'
 
@@ -8,13 +9,9 @@ export function ProjectList({ items }: { items: Project[] }) {
         <li key={project.name}>
           <div className="project-head">
             <h2 className="project-name">
-              {project.url ? (
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  {project.name}
-                </a>
-              ) : (
-                project.name
-              )}
+              <Link to={`/projects/${project.slug}`} viewTransition>
+                {project.name}
+              </Link>
             </h2>
             <span className="project-meta project-facts">
               <span className={`status status-${project.status}`}>

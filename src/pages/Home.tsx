@@ -34,13 +34,9 @@ export function Home() {
         <ul className="rows">
           {projects.slice(0, 3).map((project) => (
             <li key={project.name}>
-              {project.url ? (
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  {project.name}
-                </a>
-              ) : (
-                <span>{project.name}</span>
-              )}
+              <Link to={`/projects/${project.slug}`} viewTransition>
+                {project.name}
+              </Link>
               <span className={`status status-${project.status} project-meta`}>
                 <StatusIcon status={project.status} />
                 {statusLabels[project.status]}

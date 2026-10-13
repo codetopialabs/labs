@@ -5,17 +5,19 @@ import { defineConfig, type Plugin } from 'vite'
 
 const site = 'https://labs.codetopia.org'
 
-// Writes sitemap.xml at build time from the fixed pages plus every post
-// slug in src/data/posts.ts, so new posts are listed automatically.
+// Writes sitemap.xml at build time from the fixed pages plus every project
+// and post slug, so new projects and posts are listed automatically.
 function sitemap(): Plugin {
   return {
     name: 'sitemap',
     apply: 'build',
     generateBundle() {
-      const posts = readFileSync('src/data/posts.ts', 'utf8')
-      const slugs = [...posts.matchAll(/slug: '([^']+)'/g)].map((m) => m[1])
+      const slugsIn = (file: string) =>
+        [...readFileSync(file, 'utf8').matchAll(/slug: '([^']+)'/g)].map((m) => m[1])
+      const slugs = slugsIn('src/data/posts.ts')
+      const projectPages = slugsIn('src/data/projects.ts').map((s) => `/projects/${s}`)
       const blog = slugs.length > 0 ? ['/blog', ...slugs.map((s) => `/blog/${s}`)] : []
-      const paths = ['/', '/about', '/projects', ...blog]
+      const paths = ['/', '/about', '/projects', ...projectPages, ...blog]
       const urls = paths.map((p) => `  <url><loc>${site}${p}</loc></url>`).join('\n')
       this.emitFile({
         type: 'asset',
