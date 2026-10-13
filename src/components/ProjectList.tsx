@@ -18,7 +18,6 @@ export function ProjectList({ items }: { items: Project[] }) {
                 <StatusIcon status={project.status} />
                 {statusLabels[project.status]}
               </span>
-              <span>since {project.year}</span>
             </span>
           </div>
           <p>{project.description}</p>

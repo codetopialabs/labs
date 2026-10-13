@@ -18,8 +18,6 @@ export type Project = {
   status: Status
   description: string
   tags: string[]
-  // The year the project reached its current status.
-  year: string
   // The day the project was added to this site (YYYY-MM-DD). The newest
   // project or post is announced on the home page.
   added: string
@@ -42,7 +40,6 @@ export const projects: Project[] = [
     description:
       'The website for Codetopia Academy, where children and adults learn tech in small online classes.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    year: '2026',
     added: '2026-10-11',
     url: 'https://academy.codetopia.org',
     started: '2026-09-21',
@@ -53,7 +50,7 @@ export const projects: Project[] = [
       'A registration flow, with a direct WhatsApp line for questions.',
       'Static pages built with React and Vite, so the site loads quickly on mobile connections.',
     ],
-    now: 'Live since 11 October 2026.',
+    now: 'Parents and adult learners use it to find a class and register.',
   },
   {
     slug: 'community-portal',
@@ -62,7 +59,6 @@ export const projects: Project[] = [
     description:
       'Where members join the Codetopia community, get verified and keep track of their progress.',
     tags: ['Next.js', 'Django', 'PostgreSQL', 'WebSockets'],
-    year: '2026',
     added: '2026-04-16',
     url: 'https://portal.community.codetopia.org',
     started: '2026-04-16',
@@ -73,7 +69,7 @@ export const projects: Project[] = [
       'Verification by the Community Manager, after which Vector adds the member to the Discord server automatically.',
       'An operations side for the core team: onboarding pipelines, roles and permissions, and live updates on community activity.',
     ],
-    now: 'Live at portal.community.codetopia.org, where members join, onboard and get verified.',
+    now: 'It is how new members join the Codetopia community and get into its Discord server.',
   },
   {
     slug: 'vector',
@@ -82,7 +78,6 @@ export const projects: Project[] = [
     description:
       'The Discord bot that looks after the Codetopia community server, from new member checks to moderation.',
     tags: ['TypeScript', 'discord.js', 'Prisma', 'PostgreSQL'],
-    year: '2026',
     added: '2026-04-01',
     started: '2026-04-01',
     problem:

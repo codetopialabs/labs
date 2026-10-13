@@ -1,6 +1,5 @@
 import { Link, NavLink, Outlet, ScrollRestoration } from 'react-router'
 import { posts } from '../data/posts'
-import { email } from '../data/projects'
 import { socials } from '../data/socials'
 import { LabsLogo } from './LabsLogo'
 import { socialMarks } from './socialMarks'
@@ -55,7 +54,6 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-row">
-        <a href={`mailto:${email}`}>{email}</a>
         <span>
           A{' '}
           <a href="https://codetopia.org" target="_blank" rel="noopener noreferrer">

@@ -78,6 +78,14 @@
   color: var(--text-muted);
 }
 
+/* The home headline is the one large moment on the site. */
+.page h1.hero {
+  margin-top: 1.5rem;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
 .page a {
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
@@ -514,6 +522,14 @@
   font-weight: 500;
 }
 
+.page .project-name a {
+  text-decoration: none;
+}
+
+.page .project-name a:hover {
+  text-decoration: underline;
+}
+
 .project-meta {
   font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
@@ -733,6 +749,11 @@
 
   .page h1 {
     font-size: 1.375rem;
+  }
+
+  .page h1.hero {
+    margin-top: 0.5rem;
+    font-size: 1.75rem;
   }
 
   .footer {

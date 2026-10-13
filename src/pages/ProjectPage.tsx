@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router'
 import { StatusIcon } from '../components/StatusIcon'
+import { WorkWithUs } from '../components/WorkWithUs'
 import { formatDate } from '../data/date'
 import { projects, statusLabels } from '../data/projects'
 import { NotFound } from './NotFound'
@@ -53,6 +54,8 @@ export function ProjectPage() {
         <h2 className="eyebrow">Built with</h2>
         <p className="project-meta">{project.tags.join(', ')}</p>
       </section>
+
+      <WorkWithUs />
     </article>
   )
 }
