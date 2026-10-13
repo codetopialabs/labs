@@ -1,4 +1,3 @@
-import { HowWeWork } from '../components/HowWeWork'
 import { WorkWithUs } from '../components/WorkWithUs'
 
 export function About() {
@@ -11,7 +10,6 @@ export function About() {
         for Codetopia's own initiatives, and for companies and organisations in any industry.
       </p>
       <p>Based in Ghana. We work with teams anywhere.</p>
-      <HowWeWork />
       <WorkWithUs />
     </>
   )

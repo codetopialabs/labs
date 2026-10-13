@@ -8,9 +8,13 @@ const STAGGER_S = 0.45
 
 export function FieldGrid() {
   return (
-    <ul className="fields cards">
+    <ul className="cards fields">
       {fields.map((field, i) => (
-        <li key={field.name} style={{ '--stagger': `${i * STAGGER_S}s` } as React.CSSProperties}>
+        <li
+          key={field.name}
+          className="card"
+          style={{ '--stagger': `${i * STAGGER_S}s` } as React.CSSProperties}
+        >
           <FieldIcon field={field.icon} />
           <h3 className="card-name">{field.name}</h3>
           <p className="card-line">{field.line}</p>

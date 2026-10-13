@@ -1,10 +1,12 @@
 import { Link } from 'react-router'
 import { FieldGrid } from '../components/FieldGrid'
 import { Latest } from '../components/Latest'
+import { WorkCards } from '../components/WorkCards'
 import { WorkWithUs } from '../components/WorkWithUs'
 import { scope } from '../data/areas'
 import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
+import { projects } from '../data/projects'
 
 export function Home() {
   return (
@@ -20,6 +22,16 @@ export function Home() {
         </div>
         <p className="scope">{scope}</p>
         <FieldGrid />
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <h2 className="eyebrow">Work</h2>
+          <Link to="/projects" className="section-more" viewTransition>
+            All projects
+          </Link>
+        </div>
+        <WorkCards items={projects.slice(0, 3)} />
       </section>
 
       {posts.length > 0 && (

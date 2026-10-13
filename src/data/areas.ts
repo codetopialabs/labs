@@ -14,23 +14,3 @@ export const fields: { name: string; line: string; icon: Field }[] = [
   { name: 'Infrastructure', line: 'Systems that stay up.', icon: 'infrastructure' },
   { name: 'Design', line: 'Interfaces that need no manual.', icon: 'design' },
 ]
-
-// How a piece of work moves through the lab, shown under the fields.
-// Icons reuse the project status icons for the matching stage.
-export const steps: { name: string; description: string; icon: 'research' | 'experiment' | 'live' }[] = [
-  {
-    name: 'Study',
-    description: 'We start by understanding the problem, usually by talking to the people who have it.',
-    icon: 'research',
-  },
-  {
-    name: 'Experiment',
-    description: 'We test ideas with small prototypes before committing to one.',
-    icon: 'experiment',
-  },
-  {
-    name: 'Ship',
-    description: 'What works gets built properly and kept running.',
-    icon: 'live',
-  },
-]

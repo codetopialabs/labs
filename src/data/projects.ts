@@ -25,24 +25,21 @@ export const projects: Project[] = [
   {
     name: 'Codetopia Academy',
     status: 'live',
-    description:
-      'The website for Codetopia Academy, where children and adults learn tech in small online classes.',
+    description: 'Tech classes for children and adults, booked online.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     url: 'https://academy.codetopia.org',
   },
   {
     name: 'Codetopia Community Portal',
     status: 'live',
-    description:
-      'Where members join the Codetopia community, get verified and keep track of their progress.',
+    description: 'How new members join the community and get verified.',
     tags: ['Next.js', 'Django', 'PostgreSQL', 'WebSockets'],
     url: 'https://portal.community.codetopia.org',
   },
   {
     name: 'Vector',
     status: 'live',
-    description:
-      'The Discord bot that looks after the Codetopia community server, from new member checks to moderation.',
+    description: "Moderates the community's Discord server around the clock.",
     tags: ['TypeScript', 'discord.js', 'Prisma', 'PostgreSQL'],
   },
 ]
