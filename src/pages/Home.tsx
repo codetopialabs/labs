@@ -10,24 +10,26 @@ import { projects } from '../data/projects'
 
 export function Home() {
   return (
-    <>
+    <div className="home">
       <title>Codetopia Labs</title>
-      <Emblem />
-      <h1 className="hero">We research what's hard and engineer what works.</h1>
-      <p className="field-line">
-        {fields.map((field) => field.name.toLowerCase()).join(' / ')}
-      </p>
-
-      <Latest />
+      {/* The opening fills the first screen and sits in its centre. */}
+      <div className="home-opening">
+        <Emblem />
+        <h1 className="hero">We research what's hard and engineer what works.</h1>
+        <p className="field-line">
+          {fields.map((field) => field.name.toLowerCase()).join(' / ')}
+        </p>
+        <Latest />
+      </div>
 
       <section className="section">
         <div className="section-head">
           <h2 className="eyebrow">Selected work</h2>
-          <Link to="/projects" className="section-more" viewTransition>
-            All projects
-          </Link>
         </div>
         <WorkCards items={projects.slice(0, 3)} />
+        <Link to="/projects" className="section-more home-more" viewTransition>
+          All projects
+        </Link>
       </section>
 
       {posts.length > 0 && (
@@ -54,6 +56,6 @@ export function Home() {
       )}
 
       <WorkWithUs />
-    </>
+    </div>
   )
 }

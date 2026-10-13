@@ -386,6 +386,59 @@
   25% { transform: rotate(-14deg); }
 }
 
+/* Home: everything centred across the page; the opening (emblem,
+   headline, field line) fills the first screen and sits in its middle. */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  text-align: center;
+}
+
+.home-opening {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  width: 100%;
+  /* The screen minus the header and the page's top padding. */
+  min-height: calc(100svh - 9rem);
+}
+
+.home .emblem {
+  align-self: center;
+  margin-top: 0;
+}
+
+.home .page a.latest,
+.home a.latest {
+  align-self: center;
+}
+
+.home .section {
+  width: 100%;
+}
+
+.home .section-head {
+  justify-content: center;
+}
+
+.home .card {
+  align-items: center;
+  text-align: center;
+}
+
+.home .home-more {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.home .work-with-us {
+  align-items: center;
+}
+
 /* Every field in plain text under the headline, in the nav's path style. */
 .field-line {
   font-size: 0.9375rem;
