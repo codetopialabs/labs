@@ -16,9 +16,6 @@ export type Project = {
   status: Status
   description: string
   tags: string[]
-  // The day the project was added to this site (YYYY-MM-DD). The newest
-  // project or post is announced on the home page.
-  added: string
   // Only projects with something to visit get a link.
   url?: string
 }
@@ -31,7 +28,6 @@ export const projects: Project[] = [
     description:
       'The website for Codetopia Academy, where children and adults learn tech in small online classes.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    added: '2026-10-11',
     url: 'https://academy.codetopia.org',
   },
   {
@@ -40,7 +36,6 @@ export const projects: Project[] = [
     description:
       'Where members join the Codetopia community, get verified and keep track of their progress.',
     tags: ['Next.js', 'Django', 'PostgreSQL', 'WebSockets'],
-    added: '2026-04-16',
     url: 'https://portal.community.codetopia.org',
   },
   {
@@ -49,7 +44,6 @@ export const projects: Project[] = [
     description:
       'The Discord bot that looks after the Codetopia community server, from new member checks to moderation.',
     tags: ['TypeScript', 'discord.js', 'Prisma', 'PostgreSQL'],
-    added: '2026-04-01',
   },
 ]
 

@@ -1,12 +1,11 @@
 import { Link } from 'react-router'
 import { FieldGrid } from '../components/FieldGrid'
 import { Latest } from '../components/Latest'
-import { StatusIcon } from '../components/StatusIcon'
 import { WorkWithUs } from '../components/WorkWithUs'
 import { scope } from '../data/areas'
 import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
-import { projects, statusLabels } from '../data/projects'
+import { projects } from '../data/projects'
 
 export function Home() {
   return (
@@ -41,10 +40,6 @@ export function Home() {
               ) : (
                 <span>{project.name}</span>
               )}
-              <span className={`status status-${project.status} project-meta`}>
-                <StatusIcon status={project.status} />
-                {statusLabels[project.status]}
-              </span>
             </li>
           ))}
         </ul>

@@ -8,8 +8,8 @@ export function HowWeWork() {
         <h2 className="eyebrow">How we work</h2>
       </div>
       <ol className="steps">
-        {steps.map((step, i) => (
-          <li key={step.name} style={{ '--stagger': `${i * 0.6}s` } as React.CSSProperties}>
+        {steps.map((step) => (
+          <li key={step.name}>
             <span className={`step-icon step-icon-${step.icon}`}>
               <StatusIcon status={step.icon} />
             </span>

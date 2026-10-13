@@ -134,7 +134,7 @@
   color: var(--text);
 }
 
-/* New post: the page's lines write themselves in, hold, fade, repeat. */
+/* New post: the page's lines write themselves in once, then stay. */
 .post-mark {
   width: 1rem;
   height: 1rem;
@@ -147,39 +147,13 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .post-mark-line {
-    animation: post-write 3.2s var(--glide) infinite both;
+    animation: post-draw 0.9s var(--glide) 0.3s both;
   }
 }
 
-@keyframes post-write {
-  0% { stroke-dashoffset: 1; opacity: 1; }
-  25%, 80% { stroke-dashoffset: 0; opacity: 1; }
-  95%, 100% { stroke-dashoffset: 0; opacity: 0; }
-}
-
-/* New project: its status icon, moving in a way that fits the status. */
-.latest-status .status-icon {
-  display: block;
-  width: 1rem;
-  height: 1rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .latest-status-live path:nth-child(n + 2) {
-    animation: live-wave 2.4s var(--glide) infinite;
-  }
-
-  .latest-status-live path:nth-child(n + 4) {
-    animation-delay: 0.3s;
-  }
-
-  .latest-status-building .status-icon {
-    animation: building-turn 2.4s var(--glide) infinite;
-  }
-
-  .latest-status-research .status-icon {
-    animation: fi-sweep 2.4s var(--glide) infinite;
-  }
+@keyframes post-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
 }
 
 @keyframes live-wave {
@@ -187,61 +161,7 @@
   40% { opacity: 1; }
 }
 
-@keyframes building-turn {
-  0%, 100% { transform: rotate(0deg); }
-  40% { transform: rotate(-25deg); }
-}
 
-/* Bubbling flask: bubbles rise from the liquid and fade into the neck. */
-.new-mark {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-  overflow: visible;
-}
-
-.new-mark-liquid {
-  fill: currentColor;
-  opacity: 0.35;
-}
-
-.new-mark-bubble {
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .new-mark-bubble {
-    animation: bubble 1.65s ease-in infinite;
-  }
-}
-
-/* Without motion, show two bubbles at rest so the flask still reads as bubbling. */
-@media (prefers-reduced-motion: reduce) {
-  .new-mark-bubble:nth-of-type(1),
-  .new-mark-bubble:nth-of-type(3) {
-    opacity: 1;
-    transform: translateY(-3px);
-  }
-}
-
-@keyframes bubble {
-  0% {
-    transform: translateY(0) scale(0.6);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-11px) scale(1);
-    opacity: 0;
-  }
-}
 
 .section {
   margin-top: 3rem;
@@ -290,9 +210,9 @@
   color: var(--text-muted);
 }
 
-/* Every field icon loops its own motion: it moves in the first part of
-   the loop and rests for the remainder. Movement is applied to the whole icon (smooth
-   on the GPU); parts inside only fade. --stagger offsets each field. */
+/* Icons are still. Hovering a field plays its icon's motion once.
+   Movement is applied to the whole icon (smooth on the GPU); parts inside
+   only fade. */
 .fields .field-icon {
   transition: color 0.3s var(--ease);
 }
@@ -306,38 +226,23 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .fields .field-icon,
-  .fields .field-icon path {
-    animation-duration: 3.6s;
+  .fields li:hover .field-icon,
+  .fields li:hover .field-icon path {
+    animation-duration: 2s;
     animation-timing-function: var(--glide);
-    animation-iteration-count: infinite;
-    animation-delay: var(--stagger, 0s);
   }
 
-  .fields .field-icon {
-    will-change: transform;
-  }
-
-  .fields .field-icon-research { animation-name: fi-sweep; }
-  .fields .field-icon-software { animation-name: fi-open; }
-  .fields .field-icon-hardware { animation-name: fi-breathe; }
-  .fields .fi-core { animation-name: fi-fade; }
-  .fields .fi-link { animation-name: fi-signal; }
-  .fields .field-icon-automation { animation-name: fi-spin; }
-  .fields .field-icon-data { animation-name: fi-rise; }
-  .fields .fi-band { animation-name: fi-fade; }
-  .fields .fi-led { animation-name: fi-fade; }
-  .fields .field-icon-design { animation-name: fi-stroke; }
-
-  /* The AI links light in order across the network. */
-  .fields .field-icon .fi-link {
-    animation-delay: calc(var(--stagger, 0s) + var(--link-delay, 0s));
-  }
-
-  /* The second server light answers the first. */
-  .fields .field-icon .fi-led + .fi-led {
-    animation-delay: calc(var(--stagger, 0s) + 0.5s);
-  }
+  .fields li:hover .field-icon-research { animation-name: fi-sweep; }
+  .fields li:hover .field-icon-software { animation-name: fi-open; }
+  .fields li:hover .field-icon-hardware { animation-name: fi-breathe; }
+  .fields li:hover .fi-core { animation-name: fi-fade; }
+  .fields li:hover .fi-link { animation-name: fi-signal; animation-delay: var(--link-delay, 0s); }
+  .fields li:hover .field-icon-automation { animation-name: fi-spin; }
+  .fields li:hover .field-icon-data { animation-name: fi-rise; }
+  .fields li:hover .fi-band { animation-name: fi-fade; }
+  .fields li:hover .fi-led { animation-name: fi-fade; }
+  .fields li:hover .fi-led + .fi-led { animation-delay: 0.4s; }
+  .fields li:hover .field-icon-design { animation-name: fi-stroke; }
 }
 
 @keyframes fi-sweep {
@@ -418,21 +323,15 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .step-icon .status-icon,
-  .step-icon .status-icon path {
-    animation-duration: 3.6s;
+  .steps li:hover .status-icon,
+  .steps li:hover .status-icon path {
+    animation-duration: 2s;
     animation-timing-function: var(--glide);
-    animation-iteration-count: infinite;
-    animation-delay: var(--stagger, 0s);
   }
 
-  .step-icon .status-icon {
-    will-change: transform;
-  }
-
-  .step-icon-research .status-icon { animation-name: fi-sweep; }
-  .step-icon-experiment .status-icon { animation-name: fi-breathe; }
-  .step-icon-live .status-icon path:nth-child(n + 2) { animation-name: live-wave; }
+  .steps li:hover .step-icon-research .status-icon { animation-name: fi-sweep; }
+  .steps li:hover .step-icon-experiment .status-icon { animation-name: fi-breathe; }
+  .steps li:hover .step-icon-live .status-icon path:nth-child(n + 2) { animation-name: live-wave; }
 }
 
 @media (max-width: 640px) {

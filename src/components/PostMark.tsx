@@ -1,4 +1,4 @@
-// A page whose lines write themselves in, then fade and start again.
+// A page whose lines write themselves in once.
 // Announces a new blog post on the home page.
 export function PostMark() {
   return (
