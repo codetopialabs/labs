@@ -504,12 +504,12 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem 1rem 1.25rem;
-  background: color-mix(in srgb, var(--text) 3.5%, var(--bg));
+  background: color-mix(in srgb, var(--text) 6%, var(--bg));
   transition: background-color 0.4s var(--ease);
 }
 
 .card:hover {
-  background: color-mix(in srgb, var(--text) 6%, var(--bg));
+  background: color-mix(in srgb, var(--text) 9%, var(--bg));
 }
 
 /* Keyboard focus on a card's link outlines the whole card. */
@@ -579,7 +579,7 @@
 .tag {
   padding: 0.125rem 0.5rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--text) 8%, transparent);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
   font-size: 0.6875rem;
   line-height: 1.6;
   color: color-mix(in srgb, var(--text) 75%, transparent);
@@ -907,7 +907,7 @@
   line-height: 1;
   letter-spacing: -0.03em;
   white-space: nowrap;
-  color: color-mix(in srgb, var(--text) 3.5%, var(--bg));
+  color: color-mix(in srgb, var(--text) 6.5%, var(--bg));
 }
 
 .footer-row {
