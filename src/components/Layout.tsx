@@ -58,6 +58,9 @@ function SocialLinks() {
 function Footer() {
   return (
     <footer className="footer">
+      <p className="wordmark" aria-hidden="true">
+        LABS
+      </p>
       <div className="footer-row">
         <Link to="/careers" viewTransition>
           Careers
