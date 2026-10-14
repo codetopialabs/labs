@@ -233,9 +233,9 @@
 }
 
 .emblem .field-icon {
-  width: 4rem;
-  height: 4rem;
-  stroke-width: 1.25;
+  width: 4.5rem;
+  height: 4.5rem;
+  stroke-width: 1.55;
   color: var(--text);
 }
 
@@ -274,6 +274,8 @@
   .emblem .field-icon {
     width: 3rem;
     height: 3rem;
+    /* Same visual weight as desktop at the smaller size. */
+    stroke-width: 2;
   }
 
   .emblem-name {
@@ -284,7 +286,7 @@
 /* Two tones: structure rests soft, the part that moves (acc) rests bright.
    Fades return to each part's own resting level (--rest). */
 .field-icon path {
-  --rest: 0.55;
+  --rest: 0.7;
   opacity: var(--rest);
 }
 
