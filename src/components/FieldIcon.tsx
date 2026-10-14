@@ -1,5 +1,8 @@
-// Line icons for the fields on the home page, in the same style as the
-// status icons. Shapes adapted from Lucide (ISC licence).
+// Line icons for the fields, drawn on a 48 grid for the size the emblem
+// shows them at. Two tones: the structure is soft, and the part that moves
+// (class acc) is bright, so every icon has a focal point.
+// A plain string is a structure path. A tuple names a part, with an
+// optional delay in seconds so parts can move in sequence.
 export type Field =
   | 'research'
   | 'software'
@@ -10,65 +13,86 @@ export type Field =
   | 'infrastructure'
   | 'design'
 
-// A plain string is a static path. A tuple names a part that animates (see
-// the field icon styles in App.css), with an optional delay in seconds so
-// parts can move in sequence.
 type Part = string | [d: string, part: string, delay?: number]
 
 const paths: Record<Field, Part[]> = {
-  research: ['M11 17a6 6 0 1 0 0-12 6 6 0 0 0 0 12z', 'M20 20l-4.35-4.35'],
+  research: [
+    ['M20 32a12 12 0 1 0 0-24 12 12 0 0 0 0 24z', 'acc'],
+    'M29 29l13 13',
+    'M15 24v-3',
+    'M20 24v-7',
+    'M25 24v-5',
+  ],
   software: [
-    'M16 18l6-6-6-6',
-    'M8 6l-6 6 6 6',
-    ['M14 4L10 20', 'fi-slash'],
+    'M16 13L5 24l11 11',
+    'M32 13l11 11-11 11',
+    ['M28 9L20 39', 'fi-slash acc'],
   ],
   hardware: [
-    'M7 4h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z',
-    ['M9.5 9.5h5v5h-5z', 'fi-core'],
-    ['M9 1.5V4', 'fi-pin', 0],
-    ['M15 1.5V4', 'fi-pin', 0],
-    ['M20 9h2.5', 'fi-pin', 0.15],
-    ['M20 15h2.5', 'fi-pin', 0.15],
-    ['M15 20v2.5', 'fi-pin', 0.3],
-    ['M9 20v2.5', 'fi-pin', 0.3],
-    ['M1.5 15H4', 'fi-pin', 0.45],
-    ['M1.5 9H4', 'fi-pin', 0.45],
+    'M15 12h18a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V15a3 3 0 0 1 3-3z',
+    ['M20 19h8a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z', 'fi-core acc'],
+    ['M18 6v6', 'fi-pin', 0],
+    ['M24 6v6', 'fi-pin', 0],
+    ['M30 6v6', 'fi-pin', 0],
+    ['M36 18h6', 'fi-pin', 0.15],
+    ['M36 24h6', 'fi-pin', 0.15],
+    ['M36 30h6', 'fi-pin', 0.15],
+    ['M30 36v6', 'fi-pin', 0.3],
+    ['M24 36v6', 'fi-pin', 0.3],
+    ['M18 36v6', 'fi-pin', 0.3],
+    ['M6 30h6', 'fi-pin', 0.45],
+    ['M6 24h6', 'fi-pin', 0.45],
+    ['M6 18h6', 'fi-pin', 0.45],
   ],
   ai: [
-    'M4.5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
-    'M4.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
-    'M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
-    'M12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
-    'M19.5 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
-    ['M6.5 6L10 6', 'fi-link', 0],
-    ['M5.56 7.7L10.94 16.3', 'fi-link', 0.25],
-    ['M5.56 16.3L10.94 7.7', 'fi-link', 0.25],
-    ['M6.5 18L10 18', 'fi-link', 0],
-    ['M13.56 7.25L17.94 10.75', 'fi-link', 0.5],
-    ['M13.56 16.75L17.94 13.25', 'fi-link', 0.5],
+    'M8 17.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    'M8 37.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    'M24 11.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    'M24 27.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    'M24 43.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    'M40 17.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    'M40 37.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z',
+    ['M11 12.88L21 9.12', 'fi-link acc', 0],
+    ['M10.71 15.7L21.29 22.3', 'fi-link acc', 0],
+    ['M9.68 16.73L22.32 37.27', 'fi-link acc', 0],
+    ['M9.68 31.27L22.32 10.73', 'fi-link acc', 0],
+    ['M10.71 32.3L21.29 25.7', 'fi-link acc', 0],
+    ['M11 35.12L21 38.88', 'fi-link acc', 0],
+    ['M27 9.12L37 12.88', 'fi-link acc', 0.3],
+    ['M25.68 10.73L38.32 31.27', 'fi-link acc', 0.3],
+    ['M26.71 22.3L37.29 15.7', 'fi-link acc', 0.3],
+    ['M26.71 25.7L37.29 32.3', 'fi-link acc', 0.3],
+    ['M25.68 37.27L38.32 16.73', 'fi-link acc', 0.3],
+    ['M27 38.88L37 35.12', 'fi-link acc', 0.3],
   ],
   automation: [
-    'M3 12a9 9 0 0 1 15.5-6.2L21 8',
-    'M21 3v5h-5',
-    'M21 12a9 9 0 0 1-15.5 6.2L3 16',
-    'M3 21v-5h5',
+    'M8 22A16 16 0 0 1 36.5 13.5',
+    ['M38 6v8h-8', 'acc'],
+    'M40 26A16 16 0 0 1 11.5 34.5',
+    ['M10 42v-8h8', 'acc'],
   ],
   data: [
-    'M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5',
-    ['M12 8c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3z', 'fi-layer', 0],
-    ['M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3', 'fi-layer', 0.25],
+    'M8 12v24c0 3.3 7.2 6 16 6s16-2.7 16-6V12',
+    ['M8 12c0-3.3 7.2-6 16-6s16 2.7 16 6-7.2 6-16 6S8 15.3 8 12z', 'fi-layer acc', 0],
+    ['M8 24c0 3.3 7.2 6 16 6s16-2.7 16-6', 'fi-layer acc', 0.25],
   ],
   infrastructure: [
-    'M4 3h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z',
-    'M4 13h16a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1z',
-    ['M7 7h3', 'fi-led'],
-    ['M7 17h3', 'fi-led', 0.5],
+    'M10 8h28a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z',
+    'M10 26h28a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V28a2 2 0 0 1 2-2z',
+    'M28 13v4',
+    'M32 13v4',
+    'M36 13v4',
+    'M28 31v4',
+    'M32 31v4',
+    'M36 31v4',
+    ['M13 15h5', 'fi-led acc'],
+    ['M13 33h5', 'fi-led acc', 0.5],
   ],
   design: [
-    'M12 19l7-7 3 3-7 7-3-3z',
-    'M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z',
-    'M2 2l7.6 7.6',
-    'M11 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+    'M24 38l14-14 6 6-14 14-6-6z',
+    'M36 26l-3-15L4 4l7 29 15 3 10-10z',
+    'M4 4l15 15',
+    ['M22 27a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'acc'],
   ],
 }
 
@@ -76,7 +100,7 @@ export function FieldIcon({ field }: { field: Field }) {
   return (
     <svg
       className={`field-icon field-icon-${field}`}
-      viewBox="0 0 24 24"
+      viewBox="0 0 48 48"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
@@ -92,7 +116,7 @@ export function FieldIcon({ field }: { field: Field }) {
             key={d}
             d={d}
             className={name}
-            pathLength={name === 'fi-slash' ? 1 : undefined}
+            pathLength={name.includes('fi-slash') ? 1 : undefined}
             style={delay ? ({ '--part-delay': `${delay}s` } as React.CSSProperties) : undefined}
           />
         )
