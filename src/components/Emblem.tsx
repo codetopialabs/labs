@@ -9,7 +9,12 @@ import type { Cycle } from './useFieldCycle'
 export function Emblem({ cycle }: { cycle: Cycle }) {
   const field = fields[cycle.index]
   return (
-    <div className="emblem" aria-hidden="true" onMouseEnter={cycle.replay}>
+    <div
+      className="emblem"
+      aria-hidden="true"
+      onMouseEnter={cycle.hold}
+      onMouseLeave={cycle.resume}
+    >
       <span key={field.name} className="emblem-item">
         <span className="emblem-icon">
           <FieldIcon field={field.icon} />
@@ -33,7 +38,13 @@ export function FieldLine({ cycle }: { cycle: Cycle }) {
   const current = fields[cycle.index]
   return (
     <>
-      <p className="field-line">
+      <p
+        className="field-line"
+        onMouseLeave={cycle.resume}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) cycle.resume()
+        }}
+      >
         {fields.map((field, i) => (
           // Each word keeps its trailing dot, so a line can break after a dot
           // but never start with one.
