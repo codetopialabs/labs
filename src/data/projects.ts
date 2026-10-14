@@ -14,9 +14,18 @@ export const statusLabels: Record<Status, string> = {
 // What kind of thing a project is; each kind has its own icon.
 export type Kind = 'website' | 'platform' | 'bot'
 
+// Default label for each kind, shown beside its icon. A project can say
+// something more specific with kindLabel.
+export const kindLabels: Record<Kind, string> = {
+  website: 'Website',
+  platform: 'Platform',
+  bot: 'Bot',
+}
+
 export type Project = {
   name: string
   kind: Kind
+  kindLabel?: string
   status: Status
   description: string
   tags: string[]
@@ -45,6 +54,7 @@ export const projects: Project[] = [
   {
     name: 'Vector',
     kind: 'bot',
+    kindLabel: 'Discord bot',
     status: 'live',
     description: "Moderates the community's Discord server around the clock.",
     tags: ['TypeScript', 'discord.js', 'Prisma', 'PostgreSQL'],

@@ -1,4 +1,4 @@
-import { statusLabels, type Project, type Status } from '../data/projects'
+import { kindLabels, statusLabels, type Project, type Status } from '../data/projects'
 import { replayIcon } from './replay'
 import { ProjectIcon } from './ProjectIcon'
 import { StatusIcon } from './StatusIcon'
@@ -30,7 +30,10 @@ export function WorkCards({
           style={{ '--stagger': `${i * STAGGER_S}s` } as React.CSSProperties}
           onMouseEnter={(e) => replayIcon(e.currentTarget)}
         >
-          <ProjectIcon kind={project.kind} />
+          <div className="card-top">
+            <ProjectIcon kind={project.kind} />
+            <span className="card-kind">{project.kindLabel ?? kindLabels[project.kind]}</span>
+          </div>
           <Heading className="card-name">
             {project.url ? (
               <a href={project.url} target="_blank" rel="noopener noreferrer">
