@@ -10,7 +10,7 @@ export function Careers() {
         <>
           <p>We don't have open roles right now.</p>
           <p>
-            We're always glad to hear from people who like hard problems. Tell us what you've
+            We're always glad to hear from people who like challenging problems. Tell us what you've
             built and what you'd like to work on.
           </p>
         </>
@@ -36,7 +36,7 @@ export function Careers() {
           ))}
         </ul>
       )}
-      <WorkWithUs title="Want to work on hard problems with us?" />
+      <WorkWithUs title="Want to work on challenging problems with us?" />
     </>
   )
 }

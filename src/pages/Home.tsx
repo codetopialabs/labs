@@ -15,7 +15,7 @@ export function Home() {
     <>
       <title>Codetopia Labs</title>
       <Emblem cycle={cycle} />
-      <h1 className="hero">We research what's hard and engineer what works.</h1>
+      <h1 className="hero">We research what's challenging and engineer what works.</h1>
       <FieldLine cycle={cycle} />
 
       <Latest />

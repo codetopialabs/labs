@@ -5,7 +5,7 @@ import { email } from '../data/projects'
 // visitor's email app; the button beside it copies the address, for anyone
 // without an email app set up.
 export function WorkWithUs({
-  title = "If you're working on something hard, we'd like to hear about it.",
+  title = "Trying to wrap your head around something you're working on, we would like to hear about it.",
 }: {
   title?: string
 }) {

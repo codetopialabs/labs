@@ -46,7 +46,7 @@ export const projects: Project[] = [
     name: 'Academy Portal',
     kind: 'platform',
     status: 'building',
-    description: 'A learning platform where Academy students take lessons and track their progress.',
+    description: 'A learning platform where students in the academy take lessons and track their progress.',
     tags: [],
   },
   {
