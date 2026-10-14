@@ -305,7 +305,8 @@
   stroke-dashoffset: 0.3;
 }
 
-.fi-node {
+.fi-node,
+.fi-well {
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -356,7 +357,7 @@
   .emblem .field-icon-automation { animation-name: fi-spin; }
   .emblem .fi-layer { animation-name: fi-fade; }
   .emblem .fi-led { animation-name: fi-fade; }
-  .emblem .field-icon-design { animation-name: fi-write; }
+  .emblem .fi-well { animation-name: fi-fire; }
 }
 
 @keyframes emblem-focus {
@@ -388,14 +389,6 @@
   15% { stroke-dashoffset: -1; }
   15.01% { stroke-dashoffset: 1; }
   45%, 100% { stroke-dashoffset: 0; }
-}
-
-/* Design: short writing strokes. */
-@keyframes fi-write {
-  0%, 55%, 100% { transform: translate(0, 0) rotate(0deg); }
-  12% { transform: translate(-1px, 1px) rotate(-6deg); }
-  24% { transform: translate(1px, 0) rotate(3deg); }
-  38% { transform: translate(-0.5px, 1px) rotate(-4deg); }
 }
 
 @keyframes fi-sweep {
