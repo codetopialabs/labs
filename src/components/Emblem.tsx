@@ -1,52 +1,57 @@
-import { useEffect, useState } from 'react'
 import { fields } from '../data/areas'
 import { FieldIcon } from './FieldIcon'
+import type { Cycle } from './useFieldCycle'
 
-// Above the headline: one field at a time, each icon playing its own motion
-// as it appears. It goes through every field once, then rests on the first
-// (motion should stop on its own; WCAG 2.2.2). Hovering replays the cycle.
-// The full list is in plain text under the headline, so this is decorative.
-const STEP_MS = 2500
+// The emblem above the home headline and the field line under it, both
+// showing the current field from useFieldCycle.
 
-export function Emblem() {
-  const [index, setIndex] = useState(0)
-  const [running, setRunning] = useState(
-    () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  )
-
-  useEffect(() => {
-    if (!running) return
-    const timer = window.setTimeout(() => {
-      if (index === fields.length - 1) {
-        setIndex(0)
-        setRunning(false)
-      } else {
-        setIndex(index + 1)
-      }
-    }, STEP_MS)
-    return () => window.clearTimeout(timer)
-  }, [index, running])
-
-  const field = fields[index]
-
+export function Emblem({ cycle }: { cycle: Cycle }) {
+  const field = fields[cycle.index]
   return (
-    <div
-      className="emblem"
-      aria-hidden="true"
-      onMouseEnter={() => {
-        if (running || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-        setIndex(0)
-        setRunning(true)
-      }}
-    >
+    <div className="emblem" aria-hidden="true" onMouseEnter={cycle.replay}>
       <span key={field.name} className="emblem-item">
         <span className="emblem-icon">
           <FieldIcon field={field.icon} />
         </span>
-        <span className="emblem-mask">
-          <span className="emblem-name">{field.name}</span>
+        <span className="emblem-text">
+          <span className="emblem-mask">
+            <span className="emblem-name">{field.name}</span>
+          </span>
+          <span className="emblem-mask">
+            <span className="emblem-line">{field.line}</span>
+          </span>
         </span>
       </span>
     </div>
+  )
+}
+
+// Every field in plain text, in the nav's path style. The current field is
+// lit; each word is a button that shows its field in the emblem.
+export function FieldLine({ cycle }: { cycle: Cycle }) {
+  const current = fields[cycle.index]
+  return (
+    <>
+      <p className="field-line">
+        {fields.map((field, i) => (
+          <span key={field.name}>
+            {i > 0 && <span aria-hidden="true"> / </span>}
+            <button
+              type="button"
+              className={`field-word${i === cycle.index ? ' is-current' : ''}`}
+              aria-pressed={i === cycle.index}
+              onMouseEnter={() => cycle.pick(i)}
+              onFocus={() => cycle.pick(i)}
+              onClick={() => cycle.pick(i)}
+            >
+              {field.name.toLowerCase()}
+            </button>
+          </span>
+        ))}
+      </p>
+      <p className="sr-only" aria-live="polite">
+        {cycle.picked ? `${current.name}: ${current.line}` : ''}
+      </p>
+    </>
   )
 }

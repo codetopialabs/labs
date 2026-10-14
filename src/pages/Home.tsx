@@ -1,22 +1,22 @@
 import { Link } from 'react-router'
-import { Emblem } from '../components/Emblem'
+import { Emblem, FieldLine } from '../components/Emblem'
 import { Latest } from '../components/Latest'
+import { useFieldCycle } from '../components/useFieldCycle'
 import { WorkCards } from '../components/WorkCards'
 import { WorkWithUs } from '../components/WorkWithUs'
-import { fields } from '../data/areas'
 import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
 import { projects } from '../data/projects'
 
 export function Home() {
+  const cycle = useFieldCycle()
+
   return (
     <>
       <title>Codetopia Labs</title>
-      <Emblem />
+      <Emblem cycle={cycle} />
       <h1 className="hero">We research what's hard and engineer what works.</h1>
-      <p className="field-line">
-        {fields.map((field) => field.name.toLowerCase()).join(' / ')}
-      </p>
+      <FieldLine cycle={cycle} />
 
       <Latest />
 
