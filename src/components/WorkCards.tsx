@@ -14,6 +14,7 @@ export function WorkCards({
   detailed = false,
   headingLevel = 3,
   withKey = false,
+  list = false,
 }: {
   items: Project[]
   detailed?: boolean
@@ -22,12 +23,16 @@ export function WorkCards({
   // Card names are h3 under a section heading, h2 when the cards sit
   // directly under the page title.
   headingLevel?: 2 | 3
+  // One row per project instead of tiles.
+  list?: boolean
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3'
   // Three across, or two when that fills every row (4 cards as 2 by 2
   // instead of 3 and a lone one).
-  const twoUp = items.length % 3 !== 0 && items.length % 2 === 0
-  const className = ['cards work', twoUp && 'two-up', withKey && 'with-key'].filter(Boolean).join(' ')
+  const twoUp = !list && items.length % 3 !== 0 && items.length % 2 === 0
+  const className = ['cards work', twoUp && 'two-up', list && 'is-list', withKey && 'with-key']
+    .filter(Boolean)
+    .join(' ')
   return (
     <ul className={className}>
       {items.map((project, i) => (

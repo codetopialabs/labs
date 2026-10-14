@@ -82,6 +82,52 @@
   color: var(--text);
 }
 
+/* Title with a control on its right, like the projects view switch. */
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.25rem;
+  margin-right: -0.4375rem;
+}
+
+.view-toggle button {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.view-toggle button:hover,
+.view-toggle button[aria-pressed='true'] {
+  color: var(--text);
+}
+
+.view-toggle button[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.view-toggle button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 0;
+}
+
+.view-toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
 /* ─── Page ────────────────────────────────────────────────────────────────── */
 /* One readable column. */
 
@@ -590,6 +636,61 @@
   padding-top: 1rem;
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+/* List view on the projects page: one row per project. Icon on the left;
+   name, description and stack in the middle; kind and status on the right. */
+.cards.work.is-list {
+  --cols: 1;
+}
+
+.is-list .card {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  column-gap: 1rem;
+  align-items: start;
+  padding: 1rem 1.25rem;
+}
+
+.is-list .card-top {
+  display: contents;
+}
+
+.is-list .project-icon {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+}
+
+.is-list .card-name {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 0;
+}
+
+.is-list .card-line {
+  grid-column: 2;
+  grid-row: 2;
+  text-wrap: pretty;
+}
+
+.is-list .tags {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: 0.625rem;
+}
+
+.is-list .card-kind {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.is-list .card-status {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  margin-top: 0;
+  padding-top: 0.125rem;
 }
 
 @media (max-width: 640px) {
