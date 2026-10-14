@@ -58,9 +58,6 @@ function SocialLinks() {
 function Footer() {
   return (
     <footer className="footer">
-      <p className="wordmark" aria-hidden="true">
-        LABS
-      </p>
       <div className="footer-row">
         <Link to="/careers" viewTransition>
           Careers
@@ -88,6 +85,10 @@ export function Layout() {
       <a className="skip-link" href="#content">
         Skip to content
       </a>
+      {/* LABS, oversized and faint, behind the bottom of every page. */}
+      <div className="backdrop" aria-hidden="true">
+        <span>LABS</span>
+      </div>
       <Header />
       <main className="page" id="content" tabIndex={-1}>
         <Outlet />

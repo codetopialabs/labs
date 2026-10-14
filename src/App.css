@@ -850,23 +850,31 @@
   view-transition-name: footer;
 }
 
-/* LABS in Space Grotesk, as wide as the column and barely there, the way
-   the Academy site signs off. */
-.footer {
-  container-type: inline-size;
+/* LABS in Space Grotesk, about half the screen wide and barely there, its
+   base cut off by the bottom edge so it reads as texture behind the page. */
+.backdrop {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 100svh;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  view-transition-name: backdrop;
 }
 
-.wordmark {
-  margin-bottom: 1.5rem;
+.backdrop span {
+  position: absolute;
+  left: 50%;
+  bottom: -0.12em;
+  translate: -50% 0;
   font-family: 'Space Grotesk', var(--sans);
   font-weight: 700;
-  font-size: 44.1cqi;
-  line-height: 0.8;
-  /* Pull the L's built-in left space back so its stem meets the column edge. */
-  margin-left: -0.06em;
+  font-size: max(24vw, 9rem);
+  line-height: 1;
   letter-spacing: -0.03em;
-  color: color-mix(in srgb, var(--text) 6%, var(--bg));
-  user-select: none;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--text) 3.5%, var(--bg));
 }
 
 .footer-row {
@@ -991,11 +999,15 @@
 ::view-transition-new(root),
 ::view-transition-group(footer),
 ::view-transition-old(footer),
-::view-transition-new(footer) {
+::view-transition-new(footer),
+::view-transition-group(backdrop),
+::view-transition-old(backdrop),
+::view-transition-new(backdrop) {
   animation: none;
 }
 
-::view-transition-old(footer) {
+::view-transition-old(footer),
+::view-transition-old(backdrop) {
   display: none;
 }
 

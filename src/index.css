@@ -46,6 +46,9 @@ body {
 }
 
 #root {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
