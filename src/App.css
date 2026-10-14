@@ -109,45 +109,10 @@
 
 /* The home headline is the one large moment on the site. */
 .page h1.hero {
-  /* Wider than the text column, so the line can break into its two halves.
-     The centred home layout keeps it in the middle. */
-  width: min(60rem, calc(100vw - 3rem));
-  margin-top: 1.25rem;
-  font-size: 3.75rem;
-  line-height: 1.04;
-  letter-spacing: -0.045em;
-}
-
-/* Arrival: each word rises and sharpens a moment after the one before. */
-.hero-word {
-  display: inline-block;
-  white-space: pre;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-word {
-    animation: word-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    animation-delay: calc(0.25s + var(--i) * 0.07s);
-  }
-
-  .home .field-line {
-    animation: line-in 0.9s var(--glide) 1.1s both;
-  }
-}
-
-@keyframes word-in {
-  from {
-    opacity: 0;
-    filter: blur(6px);
-    transform: translateY(0.35em);
-  }
-}
-
-@keyframes line-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.25em);
-  }
+  margin-top: 0.75rem;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 
 .page a {
@@ -438,9 +403,8 @@
   justify-content: center;
   row-gap: 1rem;
   width: 100%;
-  /* Most of the screen, leaving the top of Selected work in view as a cue
-     to scroll. */
-  min-height: calc(100svh - 14rem);
+  /* The screen minus the header and the page's top padding. */
+  min-height: calc(100svh - 9rem);
 }
 
 .home .emblem {
@@ -473,15 +437,6 @@
 
 .home .work-with-us {
   align-items: center;
-}
-
-.home .field-line {
-  margin-top: 0.5rem;
-}
-
-/* The footer follows the centred layout on the home page. */
-body:has(.home) .footer {
-  justify-content: center;
 }
 
 /* Every field in plain text under the headline, in the nav's path style. */
@@ -851,8 +806,8 @@ body:has(.home) .footer {
   }
 
   .page h1.hero {
-    margin-top: 1rem;
-    font-size: 2.375rem;
+    margin-top: 0.5rem;
+    font-size: 1.75rem;
   }
 
   .footer {

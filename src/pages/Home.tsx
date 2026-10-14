@@ -8,8 +8,6 @@ import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
 import { projects } from '../data/projects'
 
-const headline = "We research what's hard and engineer what works."
-
 export function Home() {
   return (
     <div className="home">
@@ -17,13 +15,7 @@ export function Home() {
       {/* The opening fills the first screen and sits in its centre. */}
       <div className="home-opening">
         <Emblem />
-        <h1 className="hero">
-          {headline.split(' ').map((word, i) => (
-            <span key={i} className="hero-word" style={{ '--i': i } as React.CSSProperties}>
-              {word}{' '}
-            </span>
-          ))}
-        </h1>
+        <h1 className="hero">We research what's hard and engineer what works.</h1>
         <p className="field-line">
           {fields.map((field) => field.name.toLowerCase()).join(' / ')}
         </p>
