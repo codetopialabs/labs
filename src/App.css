@@ -542,24 +542,58 @@
 
 
 /* Work with us: one line and one clear action. */
-.work-with-us {
+/* The closing statement: second only to the home headline in size, with
+   room above so it reads as the page's conclusion. */
+.page .work-with-us {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 1rem;
+  margin-top: 5rem;
 }
 
 .work-with-us-title {
-  font-size: 1.125rem;
-  font-weight: 450;
-  letter-spacing: -0.015em;
+  max-width: 34rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 .contact {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 0.75rem;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+}
+
+/* Copy button: a 32px target holding an 18px icon; a tick once copied. */
+.contact-copy {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+
+.contact-copy:hover {
+  color: var(--text);
+}
+
+.contact-copy:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 0;
+}
+
+.contact-copy svg {
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 .page a.contact-email {
@@ -771,6 +805,14 @@
 
   .page h1 {
     font-size: 1.375rem;
+  }
+
+  .work-with-us-title {
+    font-size: 1.375rem;
+  }
+
+  .page .work-with-us {
+    margin-top: 3.5rem;
   }
 
   .page h1.hero {
