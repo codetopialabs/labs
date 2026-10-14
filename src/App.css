@@ -409,11 +409,20 @@
   25% { transform: rotate(-14deg); }
 }
 
-/* Every field in plain text under the headline, in the nav's path style.
+/* Every field in plain text under the headline, separated by middle dots.
    The field the emblem is showing is lit; each word is a button. */
 .field-line {
   font-size: 0.9375rem;
   color: var(--text-muted);
+}
+
+.field-item {
+  white-space: nowrap;
+}
+
+.field-sep {
+  margin-left: 0.5rem;
+  margin-right: 0.25rem;
 }
 
 .field-word {

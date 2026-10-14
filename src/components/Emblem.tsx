@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { fields } from '../data/areas'
 import { FieldIcon } from './FieldIcon'
 import type { Cycle } from './useFieldCycle'
@@ -26,7 +27,7 @@ export function Emblem({ cycle }: { cycle: Cycle }) {
   )
 }
 
-// Every field in plain text, in the nav's path style. The current field is
+// Every field in plain text, separated by middle dots. The current field is
 // lit; each word is a button that shows its field in the emblem.
 export function FieldLine({ cycle }: { cycle: Cycle }) {
   const current = fields[cycle.index]
@@ -34,19 +35,27 @@ export function FieldLine({ cycle }: { cycle: Cycle }) {
     <>
       <p className="field-line">
         {fields.map((field, i) => (
-          <span key={field.name}>
-            {i > 0 && <span aria-hidden="true"> / </span>}
-            <button
-              type="button"
-              className={`field-word${i === cycle.index ? ' is-current' : ''}`}
-              aria-pressed={i === cycle.index}
-              onMouseEnter={() => cycle.pick(i)}
-              onFocus={() => cycle.pick(i)}
-              onClick={() => cycle.pick(i)}
-            >
-              {field.name.toLowerCase()}
-            </button>
-          </span>
+          // Each word keeps its trailing dot, so a line can break after a dot
+          // but never start with one.
+          <Fragment key={field.name}>
+            <span className="field-item">
+              <button
+                type="button"
+                className={`field-word${i === cycle.index ? ' is-current' : ''}`}
+                aria-pressed={i === cycle.index}
+                onMouseEnter={() => cycle.pick(i)}
+                onFocus={() => cycle.pick(i)}
+                onClick={() => cycle.pick(i)}
+              >
+                {field.name.toLowerCase()}
+              </button>
+              {i < fields.length - 1 && (
+                <span className="field-sep" aria-hidden="true">
+                  ·
+                </span>
+              )}
+            </span>{' '}
+          </Fragment>
         ))}
       </p>
       <p className="sr-only" aria-live="polite">
