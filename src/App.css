@@ -463,6 +463,10 @@
   --cols: 3;
 }
 
+.cards.work.two-up {
+  --cols: 2;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -562,7 +566,8 @@
     --cols: 2;
   }
 
-  .cards.work {
+  .cards.work,
+  .cards.work.two-up {
     --cols: 1;
   }
 }

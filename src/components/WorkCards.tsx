@@ -24,8 +24,12 @@ export function WorkCards({
   headingLevel?: 2 | 3
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3'
+  // Three across, or two when that fills every row (4 cards as 2 by 2
+  // instead of 3 and a lone one).
+  const twoUp = items.length % 3 !== 0 && items.length % 2 === 0
+  const className = ['cards work', twoUp && 'two-up', withKey && 'with-key'].filter(Boolean).join(' ')
   return (
-    <ul className={withKey ? 'cards work with-key' : 'cards work'}>
+    <ul className={className}>
       {items.map((project, i) => (
         <li
           key={project.name}
