@@ -755,15 +755,23 @@
   color: var(--text-muted);
 }
 
-/* Wide screens: the key moves into the left margin, level with the cards,
-   and the cards keep only the status icon. */
+/* Wide screens: the key moves into the left margin, level with the top of
+   the cards and scrolling with them, and the cards keep only the icon. */
 @media (min-width: 1280px) {
+  .work-with-key {
+    position: relative;
+  }
+
   .status-key-wrap {
-    position: fixed;
-    top: 11rem;
-    left: max(2rem, calc(50% - 21rem - 14rem));
+    position: absolute;
+    top: 0;
+    right: calc(100% + 3.5rem);
     width: 12rem;
     margin-top: 0;
+  }
+
+  .status-key-wrap .eyebrow {
+    line-height: 1;
   }
 
   .status-key-wrap .status-key {

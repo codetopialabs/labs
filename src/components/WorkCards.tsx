@@ -69,14 +69,16 @@ export function WorkCards({
   )
 }
 
-// The statuses with what each one means. On wide screens it sits in the
-// left margin beside the cards; on smaller ones it follows them.
-export function StatusKey() {
+// The statuses on the page with what each one means. On wide screens it
+// sits in the left margin level with the cards; on smaller ones it follows them.
+export function StatusKey({ statuses }: { statuses: Set<Status> }) {
   return (
     <section className="section status-key-wrap">
       <h2 className="eyebrow">What the statuses mean</h2>
       <dl className="status-key">
-        {(Object.keys(statusLabels) as Status[]).map((status) => (
+        {(Object.keys(statusLabels) as Status[])
+          .filter((status) => statuses.has(status))
+          .map((status) => (
           <div key={status}>
             <dt className="status">
               <StatusIcon status={status} />
