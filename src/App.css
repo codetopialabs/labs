@@ -755,6 +755,43 @@
   color: var(--text-muted);
 }
 
+/* Wide screens: the key moves into the left margin, level with the cards,
+   and the cards keep only the status icon. */
+@media (min-width: 1280px) {
+  .status-key-wrap {
+    position: fixed;
+    top: 11rem;
+    left: max(2rem, calc(50% - 21rem - 14rem));
+    width: 12rem;
+    margin-top: 0;
+  }
+
+  .status-key-wrap .status-key {
+    gap: 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .status-key-wrap .status-key div {
+    grid-template-columns: 1fr;
+    gap: 0.125rem;
+  }
+
+  .status-key-wrap dd {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    padding-left: 1.1875rem;
+  }
+
+  .with-key .card-status-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
 /* ─── Blog ────────────────────────────────────────────────────────────────── */
 
 .posts {

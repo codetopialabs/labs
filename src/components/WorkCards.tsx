@@ -13,16 +13,19 @@ export function WorkCards({
   items,
   detailed = false,
   headingLevel = 3,
+  withKey = false,
 }: {
   items: Project[]
   detailed?: boolean
+  // With the status key beside the cards, wide screens show only the icon.
+  withKey?: boolean
   // Card names are h3 under a section heading, h2 when the cards sit
   // directly under the page title.
   headingLevel?: 2 | 3
 }) {
   const Heading = headingLevel === 2 ? 'h2' : 'h3'
   return (
-    <ul className="cards work">
+    <ul className={withKey ? 'cards work with-key' : 'cards work'}>
       {items.map((project, i) => (
         <li
           key={project.name}
@@ -55,9 +58,9 @@ export function WorkCards({
             </ul>
           )}
           {detailed && (
-            <p className="card-status status">
+            <p className="card-status status" title={statusLabels[project.status]}>
               <StatusIcon status={project.status} />
-              {statusLabels[project.status]}
+              <span className="card-status-label">{statusLabels[project.status]}</span>
             </p>
           )}
         </li>
@@ -66,10 +69,11 @@ export function WorkCards({
   )
 }
 
-// The statuses with what each one means, so the word on a card is clear.
+// The statuses with what each one means. On wide screens it sits in the
+// left margin beside the cards; on smaller ones it follows them.
 export function StatusKey() {
   return (
-    <section className="section">
+    <section className="section status-key-wrap">
       <h2 className="eyebrow">What the statuses mean</h2>
       <dl className="status-key">
         {(Object.keys(statusLabels) as Status[]).map((status) => (
