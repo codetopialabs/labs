@@ -899,33 +899,60 @@
 }
 
 /* ─── Page transitions ────────────────────────────────────────────────────── */
-/* On internal navigation the page slides out to the left and the next one
-   slides in from the right. Header and footer stay put. */
+/* A short drift and fade between pages. Going forward in the nav order the
+   page drifts left, going back it drifts right (data-nav is set in App).
+   The footer swaps in place instead of gliding to its new height. */
 
 ::view-transition-old(root),
-::view-transition-new(root) {
+::view-transition-new(root),
+::view-transition-group(footer),
+::view-transition-old(footer),
+::view-transition-new(footer) {
   animation: none;
 }
 
+::view-transition-old(footer) {
+  display: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  :root {
+    --nav-shift: 1rem;
+  }
+
+  :root[data-nav='back'] {
+    --nav-shift: -1rem;
+  }
+
   ::view-transition-old(page) {
-    animation: page-out 0.45s var(--ease) both;
+    animation: page-out 0.2s var(--ease) both;
   }
 
   ::view-transition-new(page) {
-    animation: page-in 0.45s var(--ease) both;
+    animation: page-in 0.3s var(--ease) 0.08s both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
   }
 }
 
 @keyframes page-out {
   to {
-    transform: translateX(-100vw);
+    opacity: 0;
+    transform: translateX(calc(var(--nav-shift) * -1));
   }
 }
 
 @keyframes page-in {
   from {
-    transform: translateX(100vw);
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateX(var(--nav-shift));
   }
 }
 
