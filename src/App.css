@@ -467,6 +467,11 @@
   --cols: 2;
 }
 
+/* Wider cards: fill the line first instead of evening out short lines. */
+.two-up .card-line {
+  text-wrap: pretty;
+}
+
 .card {
   position: relative;
   display: flex;
