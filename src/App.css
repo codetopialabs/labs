@@ -222,7 +222,7 @@
   display: flex;
   /* Fixed height (room for a wrapped line) so switching fields never
      moves the headline. */
-  height: 4.75rem;
+  height: 5.5rem;
   margin-top: 1.5rem;
 }
 
@@ -233,8 +233,8 @@
 }
 
 .emblem .field-icon {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
   stroke-width: 1.55;
   color: var(--text);
 }
@@ -272,8 +272,8 @@
   }
 
   .emblem .field-icon {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
     /* Same visual weight as desktop at the smaller size. */
     stroke-width: 2;
   }
