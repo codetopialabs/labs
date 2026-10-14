@@ -298,6 +298,18 @@
   stroke-dasharray: 1;
 }
 
+/* AI: a short bright dash that runs along a link. At rest it sits off the
+   end of the line, so only the soft link shows. */
+.fi-pulse {
+  stroke-dasharray: 0.3 1.3;
+  stroke-dashoffset: 0.3;
+}
+
+.fi-node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   /* The icon focuses in: from slightly soft and small to sharp. Then it
      plays its own motion. */
@@ -326,12 +338,21 @@
     will-change: transform;
   }
 
+  /* AI runs its signal through the network twice, each wave 1.5s. */
+  .emblem .fi-node,
+  .emblem .fi-pulse {
+    animation-duration: 1.5s;
+    animation-iteration-count: 2;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   /* Each icon's motion shows what its field does. */
   .emblem .field-icon-research { animation-name: fi-search; }
   .emblem .fi-slash { animation-name: fi-rewrite; }
   .emblem .fi-core { animation-name: fi-fade; }
   .emblem .fi-pin { animation-name: fi-fade; }
-  .emblem .fi-link { animation-name: fi-fade; }
+  .emblem .fi-node { animation-name: fi-fire; }
+  .emblem .fi-pulse { animation-name: fi-signal; }
   .emblem .field-icon-automation { animation-name: fi-spin; }
   .emblem .fi-layer { animation-name: fi-fade; }
   .emblem .fi-led { animation-name: fi-fade; }
@@ -393,6 +414,18 @@
   25% { opacity: 0.15; }
 }
 
+
+/* AI: a node fires, swelling and brightening for a moment. */
+@keyframes fi-fire {
+  0%, 25%, 100% { transform: scale(1); opacity: var(--rest, 1); }
+  8% { transform: scale(1.3); opacity: 1; }
+}
+
+/* AI: the dash travels the length of its link, then waits for the next wave. */
+@keyframes fi-signal {
+  0% { stroke-dashoffset: 0.3; }
+  30%, 100% { stroke-dashoffset: -1; }
+}
 
 @keyframes fi-glint {
   0%, 50%, 100% { color: var(--text-muted); }
