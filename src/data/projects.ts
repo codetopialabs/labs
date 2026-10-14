@@ -1,6 +1,4 @@
 // Where a project stands, in the order work moves through the lab.
-// Research: studying the problem. Experiment: testing ideas and prototypes.
-// Building: in development. Live: shipped and in use. Archived: retired.
 export type Status = 'research' | 'experiment' | 'building' | 'live' | 'archived'
 
 export const statusLabels: Record<Status, string> = {
@@ -9,6 +7,15 @@ export const statusLabels: Record<Status, string> = {
   building: 'Building',
   live: 'Live',
   archived: 'Archived',
+}
+
+// What each status means, shown under the projects.
+export const statusMeanings: Record<Status, string> = {
+  research: "We're studying the problem before building anything.",
+  experiment: "We're testing ideas with early prototypes.",
+  building: 'In development and not released yet.',
+  live: 'Released and in use.',
+  archived: 'No longer worked on.',
 }
 
 // What kind of thing a project is; each kind has its own icon.
@@ -35,6 +42,13 @@ export type Project = {
 
 // Newest first.
 export const projects: Project[] = [
+  {
+    name: 'Academy Portal',
+    kind: 'platform',
+    status: 'building',
+    description: 'A learning platform where Academy students take lessons and track their progress.',
+    tags: [],
+  },
   {
     name: 'Codetopia Academy',
     kind: 'website',

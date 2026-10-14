@@ -1,4 +1,4 @@
-import { kindLabels, statusLabels, type Project, type Status } from '../data/projects'
+import { kindLabels, statusLabels, statusMeanings, type Project, type Status } from '../data/projects'
 import { replayIcon } from './replay'
 import { ProjectIcon } from './ProjectIcon'
 import { StatusIcon } from './StatusIcon'
@@ -45,7 +45,7 @@ export function WorkCards({
             )}
           </Heading>
           <p className="card-line">{project.description}</p>
-          {detailed && (
+          {detailed && project.tags.length > 0 && (
             <ul className="tags" aria-label="Built with">
               {project.tags.map((tag) => (
                 <li key={tag} className="tag">
@@ -54,22 +54,34 @@ export function WorkCards({
               ))}
             </ul>
           )}
-          {detailed && <p className="card-status">{statusLabels[project.status]}</p>}
+          {detailed && (
+            <p className="card-status status">
+              <StatusIcon status={project.status} />
+              {statusLabels[project.status]}
+            </p>
+          )}
         </li>
       ))}
     </ul>
   )
 }
 
+// The statuses with what each one means, so the word on a card is clear.
 export function StatusKey() {
   return (
-    <ul className="status-key project-meta" aria-label="Project statuses">
-      {(Object.keys(statusLabels) as Status[]).map((status) => (
-        <li key={status} className="status">
-          <StatusIcon status={status} />
-          {statusLabels[status]}
-        </li>
-      ))}
-    </ul>
+    <section className="section">
+      <h2 className="eyebrow">What the statuses mean</h2>
+      <dl className="status-key">
+        {(Object.keys(statusLabels) as Status[]).map((status) => (
+          <div key={status}>
+            <dt className="status">
+              <StatusIcon status={status} />
+              {statusLabels[status]}
+            </dt>
+            <dd>{statusMeanings[status]}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
   )
 }

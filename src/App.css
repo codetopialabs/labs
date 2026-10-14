@@ -735,13 +735,23 @@
 }
 
 .status-key {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem 1rem;
+  display: grid;
+  gap: 0.625rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
 }
 
-.status-key .status {
+.status-key div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+}
+
+.status-key dd {
+  color: var(--text-muted);
+}
+
+.card-status.status {
   color: var(--text-muted);
 }
 
