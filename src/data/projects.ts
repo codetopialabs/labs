@@ -11,8 +11,12 @@ export const statusLabels: Record<Status, string> = {
   archived: 'Archived',
 }
 
+// What kind of thing a project is; each kind has its own icon.
+export type Kind = 'website' | 'platform' | 'bot'
+
 export type Project = {
   name: string
+  kind: Kind
   status: Status
   description: string
   tags: string[]
@@ -24,6 +28,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: 'Codetopia Academy',
+    kind: 'website',
     status: 'live',
     description: 'Tech classes for children and adults, booked online.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
@@ -31,6 +36,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Codetopia Community Portal',
+    kind: 'platform',
     status: 'live',
     description: 'How new members join the community and get verified.',
     tags: ['Next.js', 'Django', 'PostgreSQL', 'WebSockets'],
@@ -38,6 +44,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Vector',
+    kind: 'bot',
     status: 'live',
     description: "Moderates the community's Discord server around the clock.",
     tags: ['TypeScript', 'discord.js', 'Prisma', 'PostgreSQL'],

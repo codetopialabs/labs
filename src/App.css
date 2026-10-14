@@ -432,7 +432,7 @@
   outline: none;
 }
 
-.card .status-icon {
+.card .project-icon {
   width: 2rem;
   height: 2rem;
   stroke-width: 1.25;
@@ -497,28 +497,34 @@
   }
 }
 
-/* Work cards: each project's status icon loops its motion with the same
-   glint as the field icons, one card after another. */
+/* Work cards: each project's kind icon moves in a way that fits it, with
+   the same glint as elsewhere, one card after another. A few passes, then
+   rest (keep in step with PASSES in replay.ts). */
+.work .kind-line {
+  stroke-dasharray: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .work .status-icon,
-  .work .status-icon path {
+  .work .project-icon,
+  .work .project-icon path {
     animation-duration: 3.6s;
     animation-timing-function: var(--glide);
-    /* A few passes, then rest. Keep in step with PASSES in replay.ts. */
     animation-iteration-count: 3;
-    animation-delay: var(--stagger, 0s);
+    animation-delay: calc(var(--stagger, 0s) + var(--part-delay, 0s));
   }
 
-  .work .status-icon {
-    will-change: transform;
-  }
-
-  .work .status-live .status-icon { animation-name: fi-glint; }
-  .work .status-live .status-icon path:nth-child(n + 2) { animation-name: live-wave; }
-  .work .status-research .status-icon { animation-name: fi-sweep, fi-glint; }
-  .work .status-experiment .status-icon { animation-name: fi-breathe, fi-glint; }
-  .work .status-building .status-icon { animation-name: fi-stroke, fi-glint; }
+  .work .project-icon { animation-name: fi-glint; }
+  .work .kind-line { animation-name: fi-rewrite; }
+  .work .kind-layer { animation-name: fi-fade; }
+  .work .kind-eye { animation-name: kind-blink; }
 }
+
+/* Bot: the eyes close and open, twice in quick succession. */
+@keyframes kind-blink {
+  0%, 10%, 18%, 26%, 100% { opacity: 1; }
+  14%, 22% { opacity: 0.1; }
+}
+
 
 /* Work with us: one line and one clear action. */
 .work-with-us {
