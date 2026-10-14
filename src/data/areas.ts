@@ -4,12 +4,12 @@ import type { Field } from '../components/FieldIcon'
 // listed under it, with one line each on what it means. Kept broad on
 // purpose: fields, not tools.
 export const fields: { name: string; line: string; icon: Field }[] = [
-  { name: 'Research', line: 'The problem behind the problem.', icon: 'research' },
-  { name: 'Software', line: 'Software that survives real users.', icon: 'software' },
-  { name: 'Hardware', line: 'Devices that leave the lab.', icon: 'hardware' },
-  { name: 'AI', line: 'AI that earns its place.', icon: 'ai' },
-  { name: 'Automation', line: 'The work nobody should do by hand.', icon: 'automation' },
-  { name: 'Data', line: 'Data that changes decisions.', icon: 'data' },
-  { name: 'Infrastructure', line: 'Still up at 3am.', icon: 'infrastructure' },
-  { name: 'Design', line: 'If it needs a manual, we redesign it.', icon: 'design' },
+  { name: 'Research', line: 'Ask the harder question.', icon: 'research' },
+  { name: 'Software', line: 'Code that holds under load.', icon: 'software' },
+  { name: 'Hardware', line: 'Ideas you can hold.', icon: 'hardware' },
+  { name: 'AI', line: 'Intelligence, put to work.', icon: 'ai' },
+  { name: 'Automation', line: 'Busywork, gone.', icon: 'automation' },
+  { name: 'Data', line: 'Numbers that decide.', icon: 'data' },
+  { name: 'Infrastructure', line: 'Up while you sleep.', icon: 'infrastructure' },
+  { name: 'Design', line: 'Obvious at first glance.', icon: 'design' },
 ]
