@@ -1,9 +1,10 @@
 import { Link, NavLink, Outlet, ScrollRestoration } from 'react-router'
 import { posts } from '../data/posts'
-import { socials } from '../data/socials'
+// Socials are hidden for now; uncomment these, SocialLinks and its two uses.
+// import { socials } from '../data/socials'
 import { LabsLogo } from './LabsLogo'
 import { ThemeToggle } from './ThemeToggle'
-import { socialMarks } from './socialMarks'
+// import { socialMarks } from './socialMarks'
 
 function Header() {
   return (
@@ -31,6 +32,7 @@ function Header() {
   )
 }
 
+/*
 function SocialLinks() {
   return (
     <>
@@ -51,6 +53,7 @@ function SocialLinks() {
     </>
   )
 }
+*/
 
 function Footer() {
   return (
@@ -67,9 +70,11 @@ function Footer() {
           initiative
         </span>
       </div>
+      {/* Hidden for now:
       <div className="footer-links">
         <SocialLinks />
       </div>
+      */}
     </footer>
   )
 }
@@ -85,10 +90,11 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
-      {/* On wide screens the socials sit in the left margin, outside the page. */}
+      {/* Hidden for now. On wide screens the socials sit in the left margin:
       <nav className="social-rail" aria-label="Social links">
         <SocialLinks />
       </nav>
+      */}
       <ScrollRestoration />
     </>
   )
