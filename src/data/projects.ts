@@ -44,7 +44,7 @@ export const projects: Project[] = [
     url: 'https://academy.codetopia.org',
   },
   {
-    name: 'Codetopia Community Portal',
+    name: 'Community Portal',
     kind: 'platform',
     status: 'live',
     description: 'How new members join the community and get verified.',

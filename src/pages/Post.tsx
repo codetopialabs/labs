@@ -1,4 +1,5 @@
 import { useParams } from 'react-router'
+import { WorkWithUs } from '../components/WorkWithUs'
 import { formatDate } from '../data/date'
 import { posts } from '../data/posts'
 import { NotFound } from './NotFound'
@@ -18,6 +19,7 @@ export function Post() {
       {post.body.map((paragraph) => (
         <p key={paragraph.slice(0, 24)}>{paragraph}</p>
       ))}
+      <WorkWithUs />
     </article>
   )
 }

@@ -110,9 +110,9 @@
 /* The home headline is the one large moment on the site. */
 .page h1.hero {
   margin-top: 0.75rem;
-  font-size: 2.25rem;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
+  font-size: 2.75rem;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
 }
 
 .page a {
