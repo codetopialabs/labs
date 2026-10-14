@@ -613,6 +613,24 @@
   opacity: 1;
 }
 
+/* Careers: open roles, when there are any. */
+.roles {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.role-title {
+  font-weight: 500;
+}
+
+.role-meta {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
 /* Compact rows: title on the left, status or date on the right. */
 .rows {
   list-style: none;

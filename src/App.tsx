@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router'
 import { Layout } from './components/Layout'
 import { About } from './pages/About'
 import { Blog } from './pages/Blog'
+import { Careers } from './pages/Careers'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
 import { Post } from './pages/Post'
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: '/blog', element: <Blog /> },
       { path: '/blog/:slug', element: <Post /> },
       { path: '/about', element: <About /> },
+      { path: '/careers', element: <Careers /> },
       { path: '/contact', element: <Navigate to="/about" replace /> },
       { path: '*', element: <NotFound /> },
     ],

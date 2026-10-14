@@ -4,7 +4,11 @@ import { email } from '../data/projects'
 // Closing call to action at the end of every page. The address opens the
 // visitor's email app; the button beside it copies the address, for anyone
 // without an email app set up.
-export function WorkWithUs() {
+export function WorkWithUs({
+  title = "If you're working on something hard, we'd like to hear about it.",
+}: {
+  title?: string
+}) {
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
@@ -24,9 +28,7 @@ export function WorkWithUs() {
 
   return (
     <section className="section work-with-us">
-      <h2 className="work-with-us-title">
-        If you're working on something hard, we'd like to hear about it.
-      </h2>
+      <h2 className="work-with-us-title">{title}</h2>
       <p className="contact">
         <a className="contact-email" href={`mailto:${email}`}>
           {email}

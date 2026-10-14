@@ -56,6 +56,9 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-row">
+        <Link to="/careers" viewTransition>
+          Careers
+        </Link>
         <span>
           A{' '}
           <a href="https://codetopia.org" target="_blank" rel="noopener noreferrer">

@@ -16,7 +16,7 @@ function sitemap(): Plugin {
         [...readFileSync(file, 'utf8').matchAll(/slug: '([^']+)'/g)].map((m) => m[1])
       const slugs = slugsIn('src/data/posts.ts')
       const blog = slugs.length > 0 ? ['/blog', ...slugs.map((s) => `/blog/${s}`)] : []
-      const paths = ['/', '/about', '/projects', ...blog]
+      const paths = ['/', '/about', '/projects', '/careers', ...blog]
       const urls = paths.map((p) => `  <url><loc>${site}${p}</loc></url>`).join('\n')
       this.emitFile({
         type: 'asset',
