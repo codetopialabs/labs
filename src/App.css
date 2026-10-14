@@ -798,6 +798,13 @@
   color: var(--text-muted);
 }
 
+/* Smaller screens: the cards name their status, so no key. */
+@media (max-width: 1279px) {
+  .status-key-wrap {
+    display: none;
+  }
+}
+
 /* Wide screens: the key moves into the left margin, level with the top of
    the cards and scrolling with them, and the cards keep only the icon. */
 @media (min-width: 1280px) {

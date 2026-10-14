@@ -73,8 +73,9 @@ export function WorkCards({
   )
 }
 
-// The statuses on the page with what each one means. On wide screens it
-// sits in the left margin level with the cards; on smaller ones it follows them.
+// The statuses on the page with what each one means, in the left margin
+// level with the cards. Wide screens only; smaller ones name the status on
+// each card instead.
 export function StatusKey({ statuses }: { statuses: Set<Status> }) {
   return (
     <section className="section status-key-wrap">
